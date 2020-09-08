@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/teaListFragment">
+
+    <fragment
+        android:id="@+id/teaListFragment"
+        android:name="com.tzs.myteaapplication.TeaListFragment"
+        android:label="fragment_tea_list"
+        tools:layout="@layout/fragment_tea_list" >
+        <action
+            android:id="@+id/action_teaListFragment_to_viewTeaFragment"
+            app:destination="@id/viewTeaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewTeaFragment"
+        android:name="com.tzs.myteaapplication.ViewTeaFragment"
+        android:label="fragment_view_tea"
+        tools:layout="@layout/fragment_view_tea" >
+        <action
+            android:id="@+id/action_viewTeaFragment_to_editTeaFragment"
+            app:destination="@id/editTeaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editTeaFragment"
+        android:name="com.tzs.myteaapplication.EditTeaFragment"
+        android:label="fragment_edit_tea"
+        tools:layout="@layout/fragment_edit_tea" />
+</navigation>
