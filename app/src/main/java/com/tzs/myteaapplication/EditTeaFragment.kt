@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.tzs.myteaapplication.EditTeaFragmentArgs.fromBundle
 import com.tzs.myteaapplication.Model.Tea
 import com.tzs.myteaapplication.databinding.FragmentViewTeaBinding
 
@@ -24,6 +25,8 @@ class EditTeaFragment : Fragment() {
 
         initTea()
         val binding = DataBindingUtil.inflate<FragmentViewTeaBinding>(inflater, R.layout.fragment_view_tea, container, false)
+
+        binding.viewedTea = "Edit "//+args.currentTeaID.toString()
         setHasOptionsMenu(true)
         return binding.root
     }
