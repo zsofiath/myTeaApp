@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_pen_solid2" />
-                            <entry key="sourceFile" value="C:\Users\zsofi\Downloads\pen-solid.svg" />
+                            <entry key="outputName" value="ic_save_solid" />
+                            <entry key="sourceFile" value="C:\Users\zsofi\Downloads\save-solid.svg" />
                           </map>
                         </option>
                       </PersistentState>

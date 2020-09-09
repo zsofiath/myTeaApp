@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/editTeaFragment"
-        android:icon="@drawable/ic_plus_solid"
-        android:title="Add tea"
+        android:id="@+id/viewTeaFragment"
+        android:icon="@drawable/ic_save_solid"
+        android:title="Edit tea"
         app:showAsAction="ifRoom" />
 </menu>

@@ -19,9 +19,6 @@
         android:name="com.tzs.myteaapplication.ViewTeaFragment"
         android:label="fragment_view_tea"
         tools:layout="@layout/fragment_view_tea" >
-        <action
-            android:id="@+id/action_viewTeaFragment_to_editTeaFragment"
-            app:destination="@id/editTeaFragment" />
         <argument
             android:name="currentTeaID"
             app:argType="integer" />
