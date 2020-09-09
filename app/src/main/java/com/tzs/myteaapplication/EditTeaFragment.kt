@@ -32,8 +32,11 @@ class EditTeaFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
 
-        Toast.makeText(context, "Tea saved", Toast.LENGTH_LONG).show()
 
+
+        if(item.title == "save Tea") {
+            Toast.makeText(context, "Tea saved", Toast.LENGTH_LONG).show()
+        }
 
         return super.onOptionsItemSelected(item)
     }

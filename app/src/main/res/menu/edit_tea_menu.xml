@@ -5,6 +5,6 @@
     <item
         android:id="@+id/viewTeaFragment"
         android:icon="@drawable/ic_save_solid"
-        android:title="Edit tea"
+        android:title="Save tea"
         app:showAsAction="ifRoom" />
 </menu>
