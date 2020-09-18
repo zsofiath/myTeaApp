@@ -32,18 +32,9 @@ class EditTeaFragment : Fragment() {
     }
 
     fun initTea(){
+        currentTea = (activity as MainActivity?)?.currentTea
 
-        // fetch tea from db
-        // ==========================================================
-        // ==========================================================
-        var tea = Tea(1)
-        tea.name = "Silver needle"
-
-        currentTea = tea
-
-
-
-        (activity as AppCompatActivity).supportActionBar?.title =  "Edit "+tea.name
+        (activity as AppCompatActivity).supportActionBar?.title =  "Edit "+currentTea?.name
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

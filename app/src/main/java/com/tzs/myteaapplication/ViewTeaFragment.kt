@@ -34,18 +34,15 @@ class ViewTeaFragment : Fragment() {
 
     fun initTea(){
 
+
+        (activity as MainActivity?)?.currentTea = Tea(10)
+        (activity as MainActivity?)?.currentTea?.name = "Keemun"
+
         // fetch tea from db
         // ==========================================================
         // ==========================================================
-
-        var tea = Tea(1)
-        tea.name = "Silver needle view"
-        (activity as MainActivity?)?.currentTea = tea
-        currentTea = tea
-
-
-
-        (activity as AppCompatActivity).supportActionBar?.title =  tea.name
+        currentTea  = (activity as MainActivity?)?.currentTea
+        (activity as AppCompatActivity).supportActionBar?.title =  currentTea?.name
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

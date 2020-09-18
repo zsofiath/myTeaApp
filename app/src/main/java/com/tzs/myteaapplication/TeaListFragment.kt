@@ -18,6 +18,7 @@ class TeaListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         (activity as AppCompatActivity).supportActionBar?.title = "Teas"
+        (activity as MainActivity?)?.currentTea = null
 
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentTeaListBinding>(inflater, R.layout.fragment_tea_list, container, false)
