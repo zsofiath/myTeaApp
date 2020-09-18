@@ -26,7 +26,7 @@ class EditTeaFragment : Fragment() {
         initTea()
         val binding = DataBindingUtil.inflate<FragmentViewTeaBinding>(inflater, R.layout.fragment_view_tea, container, false)
 
-        binding.viewedTea = "Edit "//+args.currentTeaID.toString()
+        binding.viewedTea = "Edit "+(activity as MainActivity?)?.currentTea?.name
         setHasOptionsMenu(true)
         return binding.root
     }

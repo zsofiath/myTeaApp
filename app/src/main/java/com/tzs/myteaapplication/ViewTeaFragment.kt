@@ -3,12 +3,11 @@ package com.tzs.myteaapplication
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.tzs.myteaapplication.Model.Tea
-import com.tzs.myteaapplication.databinding.FragmentTeaListBinding
 import com.tzs.myteaapplication.databinding.FragmentViewTeaBinding
 
 
@@ -38,9 +37,10 @@ class ViewTeaFragment : Fragment() {
         // fetch tea from db
         // ==========================================================
         // ==========================================================
-        var tea = Tea(1)
-        tea.name = "Silver needle"
 
+        var tea = Tea(1)
+        tea.name = "Silver needle view"
+        (activity as MainActivity?)?.currentTea = tea
         currentTea = tea
 
 
@@ -55,6 +55,7 @@ class ViewTeaFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
+        /// put ViewTea fragment into the stack
 
         return NavigationUI.onNavDestinationSelected(item!!,
             view!!.findNavController())
