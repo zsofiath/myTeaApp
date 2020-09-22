@@ -1,4 +1,6 @@
 package com.tzs.myteaapplication.ViewModels
 
-class TeaListViewModel {
+import androidx.lifecycle.ViewModel
+
+class TeaListViewModel: ViewModel() {
 }
