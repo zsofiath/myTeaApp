@@ -5,13 +5,16 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.tzs.myteaapplication.ViewModels.TeaListViewModel
 import com.tzs.myteaapplication.databinding.FragmentTeaListBinding
 
 
 class TeaListFragment : Fragment() {
 
+    private lateinit var viewModel: TeaListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +32,9 @@ class TeaListFragment : Fragment() {
         binding.aTeaButton2.setOnClickListener {v: View ->
             v.findNavController().navigate((TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(1000)))
         }
+
+
+        viewModel = ViewModelProviders.of(this).get(TeaListViewModel::class.java)
 
         setHasOptionsMenu(true)
         return binding.root

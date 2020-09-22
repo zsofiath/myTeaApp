@@ -5,9 +5,12 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.tzs.myteaapplication.Model.Tea
+import com.tzs.myteaapplication.ViewModels.TeaListViewModel
+import com.tzs.myteaapplication.ViewModels.TeaViewModel
 import com.tzs.myteaapplication.databinding.FragmentViewTeaBinding
 
 
@@ -15,6 +18,8 @@ class ViewTeaFragment : Fragment() {
 
     var currentTeaId = 1
     var currentTea: Tea? = null
+
+    private lateinit var viewModel: TeaViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +32,8 @@ class ViewTeaFragment : Fragment() {
 
         val binding = DataBindingUtil.inflate<FragmentViewTeaBinding>(inflater, R.layout.fragment_view_tea, container, false)
         binding.viewedTea = args.currentTeaID.toString()
+
+        viewModel = ViewModelProviders.of(this).get(TeaViewModel::class.java)
 
         setHasOptionsMenu(true)
         return binding.root
