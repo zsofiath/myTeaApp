@@ -11,6 +11,7 @@ import androidx.navigation.ui.NavigationUI
 import com.tzs.myteaapplication.Model.Tea
 import com.tzs.myteaapplication.ViewModels.TeaListViewModel
 import com.tzs.myteaapplication.ViewModels.TeaViewModel
+import com.tzs.myteaapplication.databinding.FragmentTeaListBinding
 import com.tzs.myteaapplication.databinding.FragmentViewTeaBinding
 
 
@@ -28,12 +29,12 @@ class ViewTeaFragment : Fragment() {
         // Inflate the layout for this fragment
 
         initTea()
-        val args = ViewTeaFragmentArgs.fromBundle(arguments!!)
+        val args = getArgumantsFromBundle()
 
-        val binding = DataBindingUtil.inflate<FragmentViewTeaBinding>(inflater, R.layout.fragment_view_tea, container, false)
-        binding.viewedTea = args.currentTeaID.toString()
+        val binding = getBindingObjectWithLayoutInflate(inflater, container)
+        setViewedTea(binding, args)
 
-        viewModel = ViewModelProviders.of(this).get(TeaViewModel::class.java)
+        viewModel = getViewModel()
 
         setHasOptionsMenu(true)
         return binding.root
@@ -65,4 +66,22 @@ class ViewTeaFragment : Fragment() {
             view!!.findNavController())
                 || super.onOptionsItemSelected(item)
     }
+
+    private fun getArgumantsFromBundle(): ViewTeaFragmentArgs {
+        return ViewTeaFragmentArgs.fromBundle(arguments!!)
+    }
+
+    private fun getBindingObjectWithLayoutInflate(inflater:LayoutInflater, container: ViewGroup?): FragmentViewTeaBinding {
+        return DataBindingUtil.inflate<FragmentViewTeaBinding>(inflater, R.layout.fragment_view_tea, container, false)
+    }
+
+    private fun setViewedTea(binding: FragmentViewTeaBinding, args: ViewTeaFragmentArgs){
+        binding.viewedTea = args.currentTeaID.toString()
+    }
+
+    private fun getViewModel(): TeaViewModel{
+        return ViewModelProviders.of(this).get(TeaViewModel::class.java)
+    }
+
+
 }

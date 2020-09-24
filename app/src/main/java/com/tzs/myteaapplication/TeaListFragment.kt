@@ -34,7 +34,6 @@ class TeaListFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.tea_list_menu, menu)
@@ -45,7 +44,6 @@ class TeaListFragment : Fragment() {
             view!!.findNavController())
                 || super.onOptionsItemSelected(item)
     }
-
 
     private fun setFragmentTitle() {
         (activity as AppCompatActivity).supportActionBar?.title = "Teas"
