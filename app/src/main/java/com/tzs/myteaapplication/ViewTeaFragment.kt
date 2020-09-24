@@ -26,9 +26,8 @@ class ViewTeaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
-        initTea()
+        initCurrentTea()
         val args = getArgumantsFromBundle()
 
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
@@ -40,9 +39,7 @@ class ViewTeaFragment : Fragment() {
         return binding.root
     }
 
-    fun initTea(){
-
-
+    fun initCurrentTea(){
         (activity as MainActivity?)?.currentTea = Tea(10)
         (activity as MainActivity?)?.currentTea?.name = "Keemun"
 
@@ -50,7 +47,7 @@ class ViewTeaFragment : Fragment() {
         // ==========================================================
         // ==========================================================
         currentTea  = (activity as MainActivity?)?.currentTea
-        (activity as AppCompatActivity).supportActionBar?.title =  currentTea?.name
+        setFragmentTitle(currentTea?.name)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -83,5 +80,8 @@ class ViewTeaFragment : Fragment() {
         return ViewModelProviders.of(this).get(TeaViewModel::class.java)
     }
 
+    private fun setFragmentTitle(title: String?) {
+        (activity as AppCompatActivity).supportActionBar?.title = title
+    }
 
 }

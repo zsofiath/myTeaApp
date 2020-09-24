@@ -6,10 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
-import com.tzs.myteaapplication.EditTeaFragmentArgs.fromBundle
 import com.tzs.myteaapplication.Model.Tea
+import com.tzs.myteaapplication.databinding.FragmentEditTeaBinding
 import com.tzs.myteaapplication.databinding.FragmentViewTeaBinding
 
 
@@ -24,9 +22,9 @@ class EditTeaFragment : Fragment() {
         // Inflate the layout for this fragment
 
         initTea()
-        val binding = DataBindingUtil.inflate<FragmentViewTeaBinding>(inflater, R.layout.fragment_view_tea, container, false)
+        val binding = getBindingObjectWithLayoutInflate(inflater, container)
 
-        binding.viewedTea = "Edit "+(activity as MainActivity?)?.currentTea?.name
+        setBindings(binding)
         setHasOptionsMenu(true)
         return binding.root
     }
@@ -34,7 +32,7 @@ class EditTeaFragment : Fragment() {
     fun initTea(){
         currentTea = (activity as MainActivity?)?.currentTea
 
-        (activity as AppCompatActivity).supportActionBar?.title =  "Edit "+currentTea?.name
+        setFragmentTitle("Edit "+currentTea?.name)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -44,9 +42,6 @@ class EditTeaFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-
-
-
         if(item.title == "save Tea") {
             Toast.makeText(context, "Tea saved", Toast.LENGTH_LONG).show()
         }
@@ -54,5 +49,16 @@ class EditTeaFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun getBindingObjectWithLayoutInflate(inflater:LayoutInflater, container: ViewGroup?): FragmentViewTeaBinding {
+        return DataBindingUtil.inflate<FragmentViewTeaBinding>(inflater, R.layout.fragment_view_tea, container, false)
+    }
+
+    private fun setFragmentTitle(title: String?) {
+        (activity as AppCompatActivity).supportActionBar?.title = title
+    }
+
+    private fun setBindings(binding: FragmentViewTeaBinding){
+        binding.viewedTea = "Edit "+(activity as MainActivity?)?.currentTea?.name
+    }
 
 }
