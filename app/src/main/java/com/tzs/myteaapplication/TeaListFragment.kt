@@ -20,30 +20,26 @@ class TeaListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity).supportActionBar?.title = "Teas"
-        (activity as MainActivity?)?.currentTea = null
+        setFragmentTitle()
+        clearCurrentTea()
 
-        // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentTeaListBinding>(inflater, R.layout.fragment_tea_list, container, false)
+        val binding = getBindingObjectWithLayoutInflate(inflater, container)
 
-        binding.aTeaButton.setOnClickListener {v: View ->
-            v.findNavController().navigate((TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(10)))
-        }
-        binding.aTeaButton2.setOnClickListener {v: View ->
-            v.findNavController().navigate((TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(1000)))
-        }
+        setClickListeners(binding)
 
 
-        viewModel = ViewModelProviders.of(this).get(TeaListViewModel::class.java)
+        viewModel = getViewModel()
 
         setHasOptionsMenu(true)
         return binding.root
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.tea_list_menu, menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item!!,
             view!!.findNavController())
@@ -51,4 +47,28 @@ class TeaListFragment : Fragment() {
     }
 
 
+    private fun setFragmentTitle() {
+        (activity as AppCompatActivity).supportActionBar?.title = "Teas"
+    }
+
+    private fun clearCurrentTea(){
+        (activity as MainActivity?)?.currentTea = null
+    }
+
+    private fun getBindingObjectWithLayoutInflate(inflater:LayoutInflater, container: ViewGroup?): FragmentTeaListBinding{
+        return DataBindingUtil.inflate<FragmentTeaListBinding>(inflater, R.layout.fragment_tea_list, container, false)
+    }
+
+    private fun getViewModel(): TeaListViewModel{
+        return ViewModelProviders.of(this).get(TeaListViewModel::class.java)
+    }
+
+    private  fun setClickListeners(binding: FragmentTeaListBinding) {
+        binding.aTeaButton.setOnClickListener {v: View ->
+            v.findNavController().navigate((TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(10)))
+        }
+        binding.aTeaButton2.setOnClickListener {v: View ->
+            v.findNavController().navigate((TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(1000)))
+        }
+    }
 }
