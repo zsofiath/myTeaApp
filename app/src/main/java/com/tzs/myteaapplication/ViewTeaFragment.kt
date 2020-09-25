@@ -1,10 +1,12 @@
 package com.tzs.myteaapplication
 
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -34,6 +36,14 @@ class ViewTeaFragment : Fragment() {
         setViewedTea(binding, args)
 
         viewModel = getViewModel()
+
+        viewModel.countDownValue.observe(this, Observer { newValue ->
+            setButtonNumber(binding, newValue)
+        })
+
+        binding.countDownButton.setOnClickListener {v: View ->
+            viewModel.startCountDown()
+        }
 
         setHasOptionsMenu(true)
         return binding.root
@@ -74,6 +84,9 @@ class ViewTeaFragment : Fragment() {
 
     private fun setViewedTea(binding: FragmentViewTeaBinding, args: ViewTeaFragmentArgs){
         binding.viewedTea = args.currentTeaID.toString()
+    }
+    private fun setButtonNumber(binding: FragmentViewTeaBinding, newValue: Int){
+        binding.countDown = newValue.toString()
     }
 
     private fun getViewModel(): TeaViewModel{

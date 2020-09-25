@@ -9,11 +9,29 @@
         <variable
             name="ViewedTea"
             type="String" />
+        <variable
+            name="countDown"
+            type="String" />
     </data>
 
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@={ViewedTea}" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={ViewedTea}" />
+
+        <Button
+            android:id="@+id/countDownButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={countDown}" />
+
+    </LinearLayout>
+
+
+
 </layout>
