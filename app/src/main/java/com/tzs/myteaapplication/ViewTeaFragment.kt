@@ -42,7 +42,7 @@ class ViewTeaFragment : Fragment() {
         })
 
         binding.countDownButton.setOnClickListener {v: View ->
-            viewModel.startCountDown()
+            viewModel.startCountDown(20)
         }
 
         setHasOptionsMenu(true)

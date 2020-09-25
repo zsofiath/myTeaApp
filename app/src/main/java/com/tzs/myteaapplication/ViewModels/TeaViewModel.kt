@@ -1,6 +1,10 @@
 package com.tzs.myteaapplication.ViewModels
 
+import android.content.Context
+import android.os.CountDownTimer
+import android.os.Vibrator
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,10 +12,14 @@ import com.tzs.myteaapplication.Model.Tea
 import java.util.*
 import kotlin.concurrent.schedule
 import kotlin.concurrent.timer
+import kotlin.math.log
 
 class TeaViewModel: ViewModel() {
 
     var currentTea: Tea? = null
+
+
+    private var timer: CountDownTimer? = null
 
     private val _countDownValue = MutableLiveData<Int>()
     val countDownValue: LiveData<Int>
@@ -19,7 +27,7 @@ class TeaViewModel: ViewModel() {
 
     init {
         Log.i("TeaViewModel", "TeaViewModel created")
-        setCountDown()
+        setCountDown(10)
     }
 
     override fun onCleared() {
@@ -33,29 +41,28 @@ class TeaViewModel: ViewModel() {
         return tea
     }
 
-    private fun setCountDown(){
-        _countDownValue.value = 10
+    private fun setCountDown(number: Int){
+
     }
 
     private fun decreaseValue(countDownValue: MutableLiveData<Int>){
         countDownValue.value = (countDownValue.value)?.minus(1)
     }
 
-    public fun startCountDown(){
-        Log.i("TeaViewModel", "Start count down")
-        decreaseValue(_countDownValue)
-        //doCountDown(countDownValue)
-    }
+    public fun startCountDown(number: Int){
+        _countDownValue.value = number
 
-    private fun doCountDown(countDownValue: MutableLiveData<Int>){
-        Log.i("TeaViewModel", "Start count down")
-        Timer("SettingUp", false).schedule(1000) {
-            Log.i("TeaViewModel", "4444")
-            val is0 = (countDownValue.value)?.equals(0)
-            if(is0 != null && !is0) {
-                decreaseValue(countDownValue)
-                doCountDown(countDownValue)
+
+        timer = object : CountDownTimer((number*1000).toLong(),1000) {
+            override fun onTick(p0: Long) {
+                decreaseValue(_countDownValue)
+            }
+
+            override fun onFinish() {
+
             }
         }
+        timer?.start()
     }
+
 }
