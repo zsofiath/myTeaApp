@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import com.tzs.myteaapplication.Model.Tea
 import com.tzs.myteaapplication.ViewModels.TeaListViewModel
 import com.tzs.myteaapplication.ViewModels.TeaViewModel
+import com.tzs.myteaapplication.ViewModels.TeaViewModelFactory
 import com.tzs.myteaapplication.databinding.FragmentTeaListBinding
 import com.tzs.myteaapplication.databinding.FragmentViewTeaBinding
 
@@ -23,6 +24,7 @@ class ViewTeaFragment : Fragment() {
     var currentTea: Tea? = null
 
     private lateinit var viewModel: TeaViewModel
+    private lateinit var viewModelFactory: TeaViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -90,7 +92,8 @@ class ViewTeaFragment : Fragment() {
     }
 
     private fun getViewModel(): TeaViewModel{
-        return ViewModelProviders.of(this).get(TeaViewModel::class.java)
+        viewModelFactory = TeaViewModelFactory(10)
+        return ViewModelProviders.of(this, viewModelFactory).get(TeaViewModel::class.java)
     }
 
     private fun setFragmentTitle(title: String?) {

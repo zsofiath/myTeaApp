@@ -14,7 +14,7 @@ import kotlin.concurrent.schedule
 import kotlin.concurrent.timer
 import kotlin.math.log
 
-class TeaViewModel: ViewModel() {
+class TeaViewModel(teaId: Int): ViewModel() {
 
     var currentTea: Tea? = null
 
@@ -26,8 +26,7 @@ class TeaViewModel: ViewModel() {
         get() = _countDownValue
 
     init {
-        Log.i("TeaViewModel", "TeaViewModel created")
-        setCountDown(10)
+        Log.i("TeaViewModel", "TeaViewModel created. ID: $teaId")
     }
 
     override fun onCleared() {
@@ -41,9 +40,6 @@ class TeaViewModel: ViewModel() {
         return tea
     }
 
-    private fun setCountDown(number: Int){
-
-    }
 
     private fun decreaseValue(countDownValue: MutableLiveData<Int>){
         countDownValue.value = (countDownValue.value)?.minus(1)
