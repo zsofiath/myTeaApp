@@ -49,15 +49,15 @@ class EditTeaFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun getBindingObjectWithLayoutInflate(inflater:LayoutInflater, container: ViewGroup?): FragmentViewTeaBinding {
-        return DataBindingUtil.inflate<FragmentViewTeaBinding>(inflater, R.layout.fragment_view_tea, container, false)
+    private fun getBindingObjectWithLayoutInflate(inflater:LayoutInflater, container: ViewGroup?): FragmentEditTeaBinding {
+        return DataBindingUtil.inflate<FragmentEditTeaBinding>(inflater, R.layout.fragment_edit_tea, container, false)
     }
 
     private fun setFragmentTitle(title: String?) {
         (activity as AppCompatActivity).supportActionBar?.title = title
     }
 
-    private fun setBindings(binding: FragmentViewTeaBinding){
+    private fun setBindings(binding: FragmentEditTeaBinding){
         binding.viewedTea = "Edit "+(activity as MainActivity?)?.currentTea?.name
     }
 

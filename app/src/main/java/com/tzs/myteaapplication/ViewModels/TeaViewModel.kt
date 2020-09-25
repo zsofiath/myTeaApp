@@ -12,7 +12,7 @@ import kotlin.concurrent.timer
 class TeaViewModel: ViewModel() {
 
     var currentTea: Tea? = null
-    
+
     private val _countDownValue = MutableLiveData<Int>()
     val countDownValue: LiveData<Int>
         get() = _countDownValue
