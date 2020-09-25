@@ -36,13 +36,8 @@ class ViewTeaFragment : Fragment() {
 
         viewModel = getViewModel()
         binding.teaViewModel = viewModel
-        viewModel.countDownValue.observe(this, Observer { newValue ->
-            setButtonNumber(binding, newValue)
-        })
+        binding.setLifecycleOwner(this)
 
-        binding.countDownButton.setOnClickListener {v: View ->
-            viewModel.startCountDown(20)
-        }
 
         setHasOptionsMenu(true)
         return binding.root
