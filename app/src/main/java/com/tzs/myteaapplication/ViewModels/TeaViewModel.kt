@@ -1,6 +1,7 @@
 package com.tzs.myteaapplication.ViewModels
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tzs.myteaapplication.Model.Tea
@@ -11,7 +12,10 @@ import kotlin.concurrent.timer
 class TeaViewModel: ViewModel() {
 
     var currentTea: Tea? = null
-    val countDownValue = MutableLiveData<Int>()
+    
+    private val _countDownValue = MutableLiveData<Int>()
+    val countDownValue: LiveData<Int>
+        get() = _countDownValue
 
     init {
         Log.i("TeaViewModel", "TeaViewModel created")
@@ -30,7 +34,7 @@ class TeaViewModel: ViewModel() {
     }
 
     private fun setCountDown(){
-        countDownValue.value = 10
+        _countDownValue.value = 10
     }
 
     private fun decreaseValue(countDownValue: MutableLiveData<Int>){
@@ -39,7 +43,7 @@ class TeaViewModel: ViewModel() {
 
     public fun startCountDown(){
         Log.i("TeaViewModel", "Start count down")
-        decreaseValue(countDownValue)
+        decreaseValue(_countDownValue)
         //doCountDown(countDownValue)
     }
 
