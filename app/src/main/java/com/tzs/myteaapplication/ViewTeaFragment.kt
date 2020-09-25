@@ -1,7 +1,6 @@
 package com.tzs.myteaapplication
 
 import android.os.Bundle
-import android.renderscript.ScriptGroup
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -11,10 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.tzs.myteaapplication.Model.Tea
-import com.tzs.myteaapplication.ViewModels.TeaListViewModel
-import com.tzs.myteaapplication.ViewModels.TeaViewModel
-import com.tzs.myteaapplication.ViewModels.TeaViewModelFactory
-import com.tzs.myteaapplication.databinding.FragmentTeaListBinding
+import com.tzs.myteaapplication.viewmodel.TeaViewModel
+import com.tzs.myteaapplication.viewmodel.TeaViewModelFactory
 import com.tzs.myteaapplication.databinding.FragmentViewTeaBinding
 
 
@@ -38,7 +35,7 @@ class ViewTeaFragment : Fragment() {
         setViewedTea(binding, args)
 
         viewModel = getViewModel()
-
+        binding.teaViewModel = viewModel
         viewModel.countDownValue.observe(this, Observer { newValue ->
             setButtonNumber(binding, newValue)
         })
@@ -91,8 +88,9 @@ class ViewTeaFragment : Fragment() {
         binding.countDown = newValue.toString()
     }
 
-    private fun getViewModel(): TeaViewModel{
-        viewModelFactory = TeaViewModelFactory(10)
+    private fun getViewModel(): TeaViewModel {
+        viewModelFactory =
+            TeaViewModelFactory(10)
         return ViewModelProviders.of(this, viewModelFactory).get(TeaViewModel::class.java)
     }
 

@@ -1,4 +1,4 @@
-package com.tzs.myteaapplication.ViewModels
+package com.tzs.myteaapplication.viewmodel
 
 import android.content.Context
 import android.os.CountDownTimer

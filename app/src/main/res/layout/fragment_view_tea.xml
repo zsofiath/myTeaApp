@@ -5,6 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.tzs.myteaapplication.ViewTeaFragment">
     <data>
+        <variable
+            name="teaViewModel"
+            type="com.tzs.myteaapplication.viewmodel.TeaViewModel"
+            />
 
         <variable
             name="ViewedTea"
@@ -28,6 +32,13 @@
             android:id="@+id/countDownButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@={countDown}" />
+
+        <Button
+            android:id="@+id/countDownButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->teaViewModel.startCountDown(50)}"
             android:text="@={countDown}" />
 
     </LinearLayout>

@@ -1,4 +1,4 @@
-package com.tzs.myteaapplication.ViewModels
+package com.tzs.myteaapplication.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

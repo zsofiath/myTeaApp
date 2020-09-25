@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.tzs.myteaapplication.ViewModels.TeaListViewModel
+import com.tzs.myteaapplication.viewmodel.TeaListViewModel
 import com.tzs.myteaapplication.databinding.FragmentTeaListBinding
 
 
@@ -57,7 +57,7 @@ class TeaListFragment : Fragment() {
         return DataBindingUtil.inflate<FragmentTeaListBinding>(inflater, R.layout.fragment_tea_list, container, false)
     }
 
-    private fun getViewModel(): TeaListViewModel{
+    private fun getViewModel(): TeaListViewModel {
         return ViewModelProviders.of(this).get(TeaListViewModel::class.java)
     }
 
