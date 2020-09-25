@@ -11,8 +11,8 @@
         android:label="fragment_tea_list"
         tools:layout="@layout/fragment_tea_list" >
         <action
-            android:id="@+id/action_teaListFragment_to_viewTeaFragment"
-            app:destination="@id/viewTeaFragment" />
+            android:id="@+id/action_teaListFragment_to_teaActivity"
+            app:destination="@id/teaActivity" />
     </fragment>
     <fragment
         android:id="@+id/viewTeaFragment"
@@ -32,4 +32,9 @@
             android:name="CurrentTeaID"
             app:argType="integer" />
     </fragment>
+    <activity
+        android:id="@+id/teaActivity"
+        android:name="com.tzs.myteaapplication.TeaActivity"
+        android:label="activity_tea"
+        tools:layout="@layout/activity_tea" />
 </navigation>

@@ -63,10 +63,10 @@ class TeaListFragment : Fragment() {
 
     private  fun setClickListeners(binding: FragmentTeaListBinding) {
         binding.aTeaButton.setOnClickListener {v: View ->
-            v.findNavController().navigate((TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(10)))
+            //v.findNavController().navigate((Tea.action_teaListFragment_to_teaActivity(10)))
         }
         binding.aTeaButton2.setOnClickListener {v: View ->
-            v.findNavController().navigate((TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(1000)))
+            //v.findNavController().navigate((TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(1000)))
         }
     }
 }
