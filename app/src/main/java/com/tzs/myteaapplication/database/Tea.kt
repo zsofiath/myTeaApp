@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Tea (
 
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0,
+    var teaId: Int = 0,
 
     @ColumnInfo(name = "tea_name")
     var name: String = ""
