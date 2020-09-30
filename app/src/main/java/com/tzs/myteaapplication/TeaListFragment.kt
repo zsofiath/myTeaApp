@@ -8,8 +8,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.tzs.myteaapplication.database.AppDatabase
 import com.tzs.myteaapplication.viewmodel.TeaListViewModel
 import com.tzs.myteaapplication.databinding.FragmentTeaListBinding
+import com.tzs.myteaapplication.viewmodel.TeaListViewModelFactory
 
 
 class TeaListFragment : Fragment() {
@@ -25,10 +27,20 @@ class TeaListFragment : Fragment() {
 
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
 
-        setClickListeners(binding)
+        //setClickListeners(binding)
 
 
-        viewModel = getViewModel()
+        val application = requireNotNull(this.activity).application
+        val datasource = AppDatabase.getInstance(application).teaDatabaseDao
+
+
+        val viewModelFactory = TeaListViewModelFactory(datasource, application)
+
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(TeaListViewModel::class.java)
+
+        binding.teaListViewModel = viewModel
+
+        //viewModel = getViewModel()
 
         setHasOptionsMenu(true)
         return binding.root

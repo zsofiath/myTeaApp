@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="tea_list"
-            type="com.tzs.myteaapplication.TeaListFragment" />
+            name="teaListViewModel"
+            type="com.tzs.myteaapplication.viewmodel.TeaListViewModel" />
     </data>
 
     <LinearLayout
