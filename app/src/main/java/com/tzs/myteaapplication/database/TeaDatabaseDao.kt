@@ -14,7 +14,7 @@ interface TeaDatabaseDao {
     fun get (key: Int): Tea
 
     @Query("SELECT * FROM tea_table")
-    fun getAllTea (key: Int): Tea
+    fun getAllTea (): Tea
 
     @Delete
     fun deleteTea(tea: Tea)
