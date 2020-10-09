@@ -1,11 +1,12 @@
 package com.tzs.myteaapplication.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface TeaDatabaseDao {
     @Insert
-    fun insert (tea: Tea)
+    suspend fun insert(tea: Tea)
 
     @Update
     fun update (tea: Tea)
@@ -14,7 +15,7 @@ interface TeaDatabaseDao {
     fun get (key: Int): Tea
 
     @Query("SELECT * FROM tea_table")
-    fun getAllTea (): Tea
+    suspend fun getAllTea (): List<Tea>
 
     @Delete
     fun deleteTea(tea: Tea)

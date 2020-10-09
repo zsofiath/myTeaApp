@@ -25,6 +25,8 @@
             android:id="@+id/a_tea_button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:onClick="@{() -> teaListViewModel.onStartTracking()}"
+            android:text="@{teaListViewModel.nightsString}"/>
+
     </LinearLayout>
 </layout>
