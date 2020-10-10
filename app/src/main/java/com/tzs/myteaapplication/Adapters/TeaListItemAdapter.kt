@@ -23,13 +23,13 @@ class TeaListItemAdapter: RecyclerView.Adapter<TextItemViewHolder>() {
     override fun onBindViewHolder(holder: TextItemViewHolder, position: Int) {
         val item = data[position]
         // if(item black tea) kell else ág
-        holder.textView.setTextColor(Color.CYAN)
+       // holder.textView.setTextColor(Color.CYAN)
         holder.textView.text = item.name
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.text_item_view, parent, false) as TextView
+        val view = layoutInflater.inflate(R.layout.tea_button, parent, false) as TextView
         return TextItemViewHolder(view)
     }
 }
