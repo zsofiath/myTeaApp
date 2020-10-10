@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.tzs.myteaapplication.TeaListFragment">
+    >
     <data>
 
         <variable
@@ -11,22 +11,20 @@
             type="com.tzs.myteaapplication.viewmodel.TeaListViewModel" />
     </data>
 
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/a_tea_button"
+        tools:context="com.tzs.myteaapplication.TeaListFragment">
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-        <Button
-            android:id="@+id/a_tea_button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> teaListViewModel.onStartTracking()}"
-            android:text="@{teaListViewModel.nightsString}"/>
+            android:layout_height="match_parent"
+            android:id="@+id/tea_list"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            ></androidx.recyclerview.widget.RecyclerView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
+
+
 </layout>

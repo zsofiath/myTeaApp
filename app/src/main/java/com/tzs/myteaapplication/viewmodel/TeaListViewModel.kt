@@ -2,6 +2,7 @@ package com.tzs.myteaapplication.viewmodel
 
 import android.app.Application
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,6 +19,7 @@ class TeaListViewModel(
 
 
     val teas: MutableList<Tea> = mutableListOf()
+    val teas_liveData: MutableLiveData<List<Tea>> = MutableLiveData<List<Tea>>()
 
     val nightsString = ".";
     init {
@@ -37,6 +39,7 @@ class TeaListViewModel(
 
             var t = database.getAllTea()
 
+            teas_liveData.value = t;
             teas.clear()
             t.forEach {
                teas.add(it)
