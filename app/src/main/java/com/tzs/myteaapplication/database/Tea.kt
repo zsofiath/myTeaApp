@@ -10,5 +10,13 @@ data class Tea (
     var teaId: Int = 0,
 
     @ColumnInfo(name = "tea_name")
-    var name: String = ""
+    var name: String = "",
+
+    @ColumnInfo(name = "tea_temperature")
+    var temperature: Int = 0,
+
+    @ColumnInfo(name = "tea_amount_of_leaf")
+    var amount: Int = 0
+
+
 )

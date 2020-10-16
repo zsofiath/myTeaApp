@@ -26,7 +26,7 @@
             android:layout_height="55dp"
             android:ems="10"
             android:inputType="text"
-            android:text="@={EditTeaViewModel.currentTea.name}"
+            android:text="@={EditTeaViewModel.currentTea_Name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
             android:layout_marginTop="0dp"
             android:ems="10"
             android:inputType="number"
-            android:text="@={`` + EditTeaViewModel.currentTea.temp}"
+            android:text="@={EditTeaViewModel.currentTea_AmountOfLeaf}"
             app:layout_constraintTop_toBottomOf="@+id/teaName" />
         <EditText
             android:id="@+id/brewingAmount"
@@ -47,8 +47,9 @@
             android:layout_marginTop="0dp"
             android:ems="10"
             android:inputType="number"
-            android:text="@={`` + EditTeaViewModel.currentTea.amount}"
+            android:text="@={EditTeaViewModel.currentTea_BrewingTemperature}"
             app:layout_constraintTop_toBottomOf="@+id/brewingTemperature" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
