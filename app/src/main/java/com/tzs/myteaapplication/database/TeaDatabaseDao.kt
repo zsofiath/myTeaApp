@@ -15,7 +15,7 @@ interface TeaDatabaseDao {
     fun get (key: Int): Tea
 
     @Query("SELECT * FROM tea_table")
-    suspend fun getAllTea (): List<Tea>
+    fun getAllTea (): LiveData<List<Tea>>
 
     @Delete
     fun deleteTea(tea: Tea)
