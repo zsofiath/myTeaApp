@@ -25,7 +25,7 @@ class TeaTypeAdapter: RecyclerView.Adapter<TeaTypeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeaTypeViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.tea_button, parent, false) as TextView
+        val view = layoutInflater.inflate(R.layout.tea_type_radio, parent, false) as TextView
         return TeaTypeViewHolder(view)
     }
 }

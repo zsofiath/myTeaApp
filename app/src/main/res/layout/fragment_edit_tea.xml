@@ -50,13 +50,20 @@
             android:text="@={EditTeaViewModel.currentTea_BrewingTemperature}"
             app:layout_constraintTop_toBottomOf="@+id/brewingTemperature" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tea_type_list"
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@+id/brewingAmount"></androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@+id/brewingAmount">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tea_type_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                ></androidx.recyclerview.widget.RecyclerView>
+        </RadioGroup>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
