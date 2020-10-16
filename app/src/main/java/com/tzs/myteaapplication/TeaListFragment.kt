@@ -28,29 +28,13 @@ class TeaListFragment : Fragment() {
         clearCurrentTea()
 
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
-
-
-
-
-        val application = requireNotNull(this.activity).application
-        val datasource = AppDatabase.getInstance(application).teaDatabaseDao
-
-
-        val viewModelFactory = TeaListViewModelFactory(datasource, application)
-
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(TeaListViewModel::class.java)
-
+        viewModel = createViewModel()
         binding.teaListViewModel = viewModel
 
         val adapter = TeaListItemAdapter()
         binding.teaList.adapter = adapter
 
-        viewModel.teas_liveData.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                adapter.data =  it
-            }
-        })
-
+        notifyTeaListChanges(adapter)
 
         setHasOptionsMenu(true)
         return binding.root
@@ -67,8 +51,23 @@ class TeaListFragment : Fragment() {
                 || super.onOptionsItemSelected(item)
     }
 
+    private fun createViewModel() :TeaListViewModel{
+        val application = requireNotNull(this.activity).application
+        val datasource = AppDatabase.getInstance(application).teaDatabaseDao
+        val viewModelFactory = TeaListViewModelFactory(datasource, application)
+        return ViewModelProviders.of(this, viewModelFactory).get(TeaListViewModel::class.java)
+    }
+
     private fun setFragmentTitle() {
         (activity as AppCompatActivity).supportActionBar?.title = "Teas"
+    }
+
+    private fun notifyTeaListChanges(adapter: TeaListItemAdapter){
+        viewModel.teas_liveData.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data =  it
+            }
+        })
     }
 
     private fun clearCurrentTea(){
