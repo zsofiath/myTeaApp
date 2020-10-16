@@ -11,9 +11,43 @@
             type="String" />
     </data>
 
-
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/teaForm"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@={ViewedTea}" />
+        android:layout_margin="6dp">
+
+        <EditText
+            android:id="@+id/teaName"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/brewingTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="0dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="Temperature"
+            app:layout_constraintTop_toBottomOf="@+id/teaName" />
+        <EditText
+            android:id="@+id/brewingAmount"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="0dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="Amount"
+            app:layout_constraintTop_toBottomOf="@+id/brewingTemperature" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

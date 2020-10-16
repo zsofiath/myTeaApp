@@ -25,6 +25,7 @@ class TeaListItemAdapter: RecyclerView.Adapter<TextItemViewHolder>() {
         // if(item black tea) kell else ág
        // holder.textView.setTextColor(Color.CYAN)
         holder.textView.text = item.name
+        holder.textView.setBackgroundColor(6)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextItemViewHolder {

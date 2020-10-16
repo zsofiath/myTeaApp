@@ -26,6 +26,7 @@ class TeaListViewModel(
         Log.i("TeaListViewModel", "TeaListViewModel created")
         DebugDB.getAddressLog();
         get()
+        onStartTracking()
     }
 
     private fun get() {
@@ -34,7 +35,7 @@ class TeaListViewModel(
             // Create a new night, which captures the current time,
             // and insert it into the database.
             val newNight = Tea()
-            newNight.name = "hui"
+            newNight.name = "Bai mu dan"
 
 
             var t = database.getAllTea()
@@ -68,7 +69,7 @@ class TeaListViewModel(
             // Create a new night, which captures the current time,
             // and insert it into the database.
             val newNight = Tea()
-            newNight.name = "hui"
+            newNight.name = "bai mu dan"
 
             Log.i("TeaListViewModel......", teas.count().toString())
             insert(newNight)
