@@ -16,16 +16,6 @@ import com.tzs.myteaapplication.viewmodel.EditTeaViewModelFactory
 import com.tzs.myteaapplication.viewmodel.TeaListViewModel
 import com.tzs.myteaapplication.viewmodel.TeaListViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [NewTeaFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class NewTeaFragment : Fragment() {
     var currentTea: Tea? = null
     private lateinit var viewModel: EditTeaViewModel
@@ -65,6 +55,7 @@ class NewTeaFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.toString() == "Save tea") {
+            viewModel.saveTea()
             Toast.makeText(context, "Tea saved: "+viewModel.currentTea.name, Toast.LENGTH_LONG).show()
         }
 

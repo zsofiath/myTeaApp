@@ -26,7 +26,6 @@ class TeaListViewModel(
         Log.i("TeaListViewModel", "TeaListViewModel created")
         DebugDB.getAddressLog();
         get()
-        onStartTracking()
     }
 
     private fun get() {
@@ -53,26 +52,5 @@ class TeaListViewModel(
     override fun onCleared() {
         super.onCleared()
         Log.i("TeaListViewModel", "TeaListViewModel destroyed")
-    }
-
-    private suspend fun insert(night: Tea) {
-        DebugDB.getAddressLog();
-        Log.i("TeaListViewModel......", teas.count().toString())
-
-        database.insert(night)
-        get()
-    }
-
-    fun onStartTracking() {
-        Log.i("TeaListViewModel......", teas.count().toString())
-        viewModelScope.launch {
-            // Create a new night, which captures the current time,
-            // and insert it into the database.
-            val newNight = Tea()
-            newNight.name = "bai mu dan"
-
-            Log.i("TeaListViewModel......", teas.count().toString())
-            insert(newNight)
-        }
     }
 }
