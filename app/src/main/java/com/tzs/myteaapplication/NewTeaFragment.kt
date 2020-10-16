@@ -7,8 +7,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.tzs.myteaapplication.Adapters.TeaListItemAdapter
+import com.tzs.myteaapplication.Adapters.TeaTypeAdapter
 import com.tzs.myteaapplication.Model.Tea
+import com.tzs.myteaapplication.Model.TeaTypes
 import com.tzs.myteaapplication.database.AppDatabase
 import com.tzs.myteaapplication.databinding.FragmentEditTeaBinding
 import com.tzs.myteaapplication.viewmodel.EditTeaViewModel
@@ -27,9 +31,13 @@ class NewTeaFragment : Fragment() {
 
         setFragmentTitle()
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
+
+        val adapter = TeaTypeAdapter()
+        binding.teaTypeList.adapter = adapter
+
         viewModel = createViewModel()
         binding.editTeaViewModel = viewModel
-
+        adapter.data = viewModel.teaTypes
         setBindings(binding)
         setHasOptionsMenu(true)
         return binding.root

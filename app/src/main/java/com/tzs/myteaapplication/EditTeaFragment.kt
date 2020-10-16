@@ -6,9 +6,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.tzs.myteaapplication.Adapters.TeaTypeAdapter
 import com.tzs.myteaapplication.Model.Tea
 import com.tzs.myteaapplication.databinding.FragmentEditTeaBinding
-import com.tzs.myteaapplication.databinding.FragmentViewTeaBinding
 
 
 class EditTeaFragment : Fragment() {
@@ -19,8 +19,6 @@ class EditTeaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-
         initTea()
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
 

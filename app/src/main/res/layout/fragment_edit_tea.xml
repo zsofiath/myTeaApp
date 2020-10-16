@@ -50,6 +50,15 @@
             android:text="@={EditTeaViewModel.currentTea_BrewingTemperature}"
             app:layout_constraintTop_toBottomOf="@+id/brewingTemperature" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tea_type_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/brewingAmount"
+            ></androidx.recyclerview.widget.RecyclerView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
