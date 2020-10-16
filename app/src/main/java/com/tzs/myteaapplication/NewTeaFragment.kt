@@ -29,7 +29,7 @@ class NewTeaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        setFragmentTitle()
+        setFragmentTitle("Create new tea")
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
 
         val adapter = TeaTypeAdapter()
@@ -41,12 +41,6 @@ class NewTeaFragment : Fragment() {
         setBindings(binding)
         setHasOptionsMenu(true)
         return binding.root
-    }
-
-    private fun setFragmentTitle(){
-        currentTea = (activity as MainActivity?)?.currentTea
-
-        setFragmentTitle("Create new tea")
     }
 
     private fun createViewModel() :EditTeaViewModel{
