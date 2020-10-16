@@ -31,7 +31,6 @@ class EditTeaFragment : Fragment() {
 
     fun initTea(){
         currentTea = (activity as MainActivity?)?.currentTea
-
         setFragmentTitle("Edit "+currentTea?.name)
     }
 

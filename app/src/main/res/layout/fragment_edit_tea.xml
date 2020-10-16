@@ -9,6 +9,9 @@
         <variable
             name="ViewedTea"
             type="String" />
+        <variable
+            name="EditTeaViewModel"
+            type="com.tzs.myteaapplication.viewmodel.EditTeaViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +26,7 @@
             android:layout_height="55dp"
             android:ems="10"
             android:inputType="text"
-            android:text="Name"
+            android:text="@={EditTeaViewModel.currentTea.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +38,7 @@
             android:layout_marginTop="0dp"
             android:ems="10"
             android:inputType="number"
-            android:text="Temperature"
+            android:text="@={`` + EditTeaViewModel.currentTea.temp}"
             app:layout_constraintTop_toBottomOf="@+id/teaName" />
         <EditText
             android:id="@+id/brewingAmount"
@@ -44,7 +47,7 @@
             android:layout_marginTop="0dp"
             android:ems="10"
             android:inputType="number"
-            android:text="Amount"
+            android:text="@={`` + EditTeaViewModel.currentTea.amount}"
             app:layout_constraintTop_toBottomOf="@+id/brewingTemperature" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
