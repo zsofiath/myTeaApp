@@ -27,15 +27,9 @@ class TeaListItemAdapter: RecyclerView.Adapter<TeaListItemAdapter.ViewHolder>() 
 
     class ViewHolder private constructor(val binding: TeaListButtonBinding): RecyclerView.ViewHolder(binding.root){
 
-        fun bind(
-            item: Tea
-        ) {
-            val res = itemView.context.resources
-            var z = res
-            // if(item black tea) kell else ág
-            // holder.textView.setTextColor(Color.CYAN)
-            binding.teaListButton.text = item.name
-            //holder.btn.setBackgroundColor(6)
+        fun bind( item: Tea ) {
+           binding.tea = item
+           binding.executePendingBindings()
         }
 
         companion object {
