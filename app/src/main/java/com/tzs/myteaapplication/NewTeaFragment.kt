@@ -33,7 +33,7 @@ class NewTeaFragment : Fragment() {
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
 
         val adapter = TeaTypeAdapter()
-        binding.teaTypeList.adapter = adapter
+        //binding.teaTypeList.adapter = adapter
 
         viewModel = createViewModel()
         binding.editTeaViewModel = viewModel

@@ -20,6 +20,15 @@
         android:layout_height="match_parent"
         android:layout_margin="6dp">
 
+
+        <TextView
+            android:id="@+id/tea_name_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tea name"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
         <EditText
             android:id="@+id/teaName"
             android:layout_width="match_parent"
@@ -27,29 +36,130 @@
             android:ems="10"
             android:inputType="text"
             android:text="@={EditTeaViewModel.currentTea_Name}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/tea_name_label" />
+
+        <TextView
+            android:id="@+id/temperature_label"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.5"
+            android:layout_height="wrap_content"
+            android:text="Brewing temperature"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/teaName" />
+
+        <TextView
+            android:id="@+id/temperature_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="°C"
+            app:layout_constraintBottom_toBottomOf="@+id/brewingAmount"
+            app:layout_constraintEnd_toEndOf="@+id/temperature_label"
+            app:layout_constraintStart_toEndOf="@+id/brewingTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/temperature_label" />
+
         <EditText
             android:id="@+id/brewingTemperature"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="45dp"
-            android:layout_marginTop="0dp"
             android:ems="10"
             android:inputType="number"
             android:text="@={EditTeaViewModel.currentTea_AmountOfLeaf}"
-            app:layout_constraintTop_toBottomOf="@+id/teaName" />
+            app:layout_constraintEnd_toStartOf="@+id/temperature_unit"
+            app:layout_constraintStart_toStartOf="@+id/temperature_label"
+            app:layout_constraintTop_toBottomOf="@+id/temperature_label" />
+
+        <TextView
+            android:id="@+id/amount_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Amount of leaves"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/temperature_label"
+            app:layout_constraintTop_toBottomOf="@+id/teaName"
+            app:layout_constraintWidth_percent="0.5" />
+
         <EditText
             android:id="@+id/brewingAmount"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
             android:ems="10"
             android:inputType="number"
             android:text="@={EditTeaViewModel.currentTea_BrewingTemperature}"
+            app:layout_constraintStart_toStartOf="@+id/amount_label"
+            app:layout_constraintEnd_toStartOf="@+id/amount_unit"
+            app:layout_constraintTop_toBottomOf="@+id/amount_label" />
+
+        <TextView
+            android:id="@+id/amount_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="g/100ml"
+            app:layout_constraintBottom_toBottomOf="@+id/brewingAmount"
+            app:layout_constraintEnd_toEndOf="@+id/amount_label"
+            app:layout_constraintStart_toEndOf="@+id/brewingAmount"
+            app:layout_constraintTop_toBottomOf="@+id/amount_label" />
+
+        <TextView
+            android:id="@+id/tea_type_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tea type"
             app:layout_constraintTop_toBottomOf="@+id/brewingTemperature" />
 
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="397dp"
+            android:layout_height="225dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tea_type_label">
+
+            <RadioButton
+                android:id="@+id/teaType_green"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Green" />
+
+            <RadioButton
+                android:id="@+id/teaType_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Black" />
+
+            <RadioButton
+                android:id="@+id/teaType_white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="White" />
+
+            <RadioButton
+                android:id="@+id/teaType_oolong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Oolong" />
+
+            <RadioButton
+                android:id="@+id/teaType_puerh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Puerh" />
+
+            <RadioButton
+                android:id="@+id/teaType_yellow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yellow" />
+
+            <RadioButton
+                android:id="@+id/teaType_herbal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Herbal" />
+        </RadioGroup>
+
+        <!--
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,6 +172,8 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 ></androidx.recyclerview.widget.RecyclerView>
         </RadioGroup>
+        -->
+
 
 
 
