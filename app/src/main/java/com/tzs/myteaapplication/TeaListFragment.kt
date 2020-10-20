@@ -88,17 +88,4 @@ class TeaListFragment : Fragment() {
     private fun getBindingObjectWithLayoutInflate(inflater:LayoutInflater, container: ViewGroup?): FragmentTeaListBinding{
         return DataBindingUtil.inflate<FragmentTeaListBinding>(inflater, R.layout.fragment_tea_list, container, false)
     }
-
-    private fun getViewModel(): TeaListViewModel {
-        return ViewModelProviders.of(this).get(TeaListViewModel::class.java)
-    }
-
-    private  fun setClickListeners(binding: FragmentTeaListBinding) {
-        /*binding.aTeaButton.setOnClickListener {v: View ->
-            v.findNavController().navigate((TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(10)))
-        }
-        binding.aTeaButton2.setOnClickListener {v: View ->
-            v.findNavController().navigate((TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(1000)))
-        }*/
-    }
 }
