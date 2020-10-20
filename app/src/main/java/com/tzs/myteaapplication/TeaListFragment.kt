@@ -2,6 +2,7 @@ package com.tzs.myteaapplication
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
@@ -13,6 +14,7 @@ import com.tzs.myteaapplication.Adapters.TeaListItemAdapter
 import com.tzs.myteaapplication.database.AppDatabase
 import com.tzs.myteaapplication.viewmodel.TeaListViewModel
 import com.tzs.myteaapplication.databinding.FragmentTeaListBinding
+import com.tzs.myteaapplication.listeners.TeaItemClickListener
 import com.tzs.myteaapplication.viewmodel.TeaListViewModelFactory
 
 
@@ -31,7 +33,9 @@ class TeaListFragment : Fragment() {
         viewModel = createViewModel()
         binding.teaListViewModel = viewModel
 
-        val adapter = TeaListItemAdapter()
+        val adapter = TeaListItemAdapter(TeaItemClickListener {
+            teaId -> Toast.makeText(context, "${teaId}", Toast.LENGTH_LONG).show()
+        })
         binding.teaList.adapter = adapter
 
         notifyTeaListChanges(adapter)

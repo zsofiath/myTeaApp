@@ -6,6 +6,9 @@
         <variable
             name="tea"
             type="com.tzs.myteaapplication.database.Tea" />
+        <variable
+            name="teaItemClickListener"
+            type="com.tzs.myteaapplication.listeners.TeaItemClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             teaFormatter="@{tea}"
+            android:onClick="@{() -> teaItemClickListener.onClick(tea)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
