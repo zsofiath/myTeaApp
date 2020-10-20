@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.tzs.myteaapplication.Adapters.TeaListItemAdapter
 import com.tzs.myteaapplication.database.AppDatabase
@@ -33,15 +34,21 @@ class TeaListFragment : Fragment() {
         viewModel = createViewModel()
         binding.teaListViewModel = viewModel
 
-        val adapter = TeaListItemAdapter(TeaItemClickListener {
-            teaId -> Toast.makeText(context, "${teaId}", Toast.LENGTH_LONG).show()
-        })
-        binding.teaList.adapter = adapter
+        val adapter = setTeaListItemAdapter(binding)
 
         notifyTeaListChanges(adapter)
 
         setHasOptionsMenu(true)
         return binding.root
+    }
+
+    private fun setTeaListItemAdapter(binding: FragmentTeaListBinding): TeaListItemAdapter {
+        val adapter = TeaListItemAdapter(TeaItemClickListener { teaId ->
+            findNavController().navigate(TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(teaId))
+        })
+
+        binding.teaList.adapter = adapter
+        return adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
