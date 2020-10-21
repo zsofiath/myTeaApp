@@ -7,8 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amitshekhar.DebugDB
-import com.tzs.myteaapplication.Model.Tea
-import com.tzs.myteaapplication.Model.TeaTypes
+import com.tzs.myteaapplication.models.Tea
+import com.tzs.myteaapplication.models.TeaTypes
 import com.tzs.myteaapplication.database.TeaDatabaseDao
 import kotlinx.coroutines.launch
 import java.util.stream.Collectors.toList
@@ -36,12 +36,12 @@ class EditTeaViewModel(
 
     private fun prepareAndSave() {
         viewModelScope.launch {
-            val newTea = com.tzs.myteaapplication.database.Tea()
+            /*val newTea = com.tzs.myteaapplication.database.Tea()
             newTea.name = currentTea_Name
             newTea.temperature = currentTea_BrewingTemperature.toInt()
             newTea.amount = currentTea_AmountOfLeaf.toInt()
 
-            insert(newTea)
+            insert(newTea)*/
         }
     }
 
@@ -49,7 +49,7 @@ class EditTeaViewModel(
         return currentTea_Name != "" && currentTea_BrewingTemperature!= "" && currentTea_AmountOfLeaf != ""
     }
 
-    private suspend fun insert(night: com.tzs.myteaapplication.database.Tea) {
-        database.insert(night)
+    private suspend fun insert(night: Tea) {
+       // database.insert(night)
     }
 }

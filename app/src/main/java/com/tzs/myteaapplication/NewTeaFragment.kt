@@ -11,8 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.tzs.myteaapplication.Adapters.TeaListItemAdapter
 import com.tzs.myteaapplication.Adapters.TeaTypeAdapter
-import com.tzs.myteaapplication.Model.Tea
-import com.tzs.myteaapplication.Model.TeaTypes
+import com.tzs.myteaapplication.models.Tea
+import com.tzs.myteaapplication.models.TeaTypes
 import com.tzs.myteaapplication.database.AppDatabase
 import com.tzs.myteaapplication.databinding.FragmentEditTeaBinding
 import com.tzs.myteaapplication.viewmodel.EditTeaViewModel

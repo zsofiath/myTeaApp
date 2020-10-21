@@ -3,7 +3,7 @@ package com.tzs.myteaapplication.Adapters
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
-import com.tzs.myteaapplication.database.Tea
+import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.databinding.TeaListButtonBinding
 import com.tzs.myteaapplication.listeners.TeaItemClickListener
 

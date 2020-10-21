@@ -5,7 +5,7 @@
     <data>
         <variable
             name="tea"
-            type="com.tzs.myteaapplication.database.Tea" />
+            type="com.tzs.myteaapplication.models.Tea" />
         <variable
             name="teaItemClickListener"
             type="com.tzs.myteaapplication.listeners.TeaItemClickListener" />

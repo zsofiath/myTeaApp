@@ -4,18 +4,19 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
 import com.amitshekhar.DebugDB
+import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.database.AppDatabase
-import com.tzs.myteaapplication.database.Tea
 import com.tzs.myteaapplication.database.TeaDatabaseDao
+import com.tzs.myteaapplication.repository.TeaRepository
 import kotlinx.coroutines.launch
 
 class TeaListViewModel(
-    val database: TeaDatabaseDao,
+    val repository: TeaRepository,
     application: Application
 ): ViewModel() {
 
 
-    val teas_liveData: LiveData<List<Tea>> = database.getAllTea()
+    val teas_liveData: LiveData<List<Tea>> = repository.getAllTea()
 
 
 

@@ -16,6 +16,7 @@ import com.tzs.myteaapplication.database.AppDatabase
 import com.tzs.myteaapplication.viewmodel.TeaListViewModel
 import com.tzs.myteaapplication.databinding.FragmentTeaListBinding
 import com.tzs.myteaapplication.listeners.TeaItemClickListener
+import com.tzs.myteaapplication.repository.TeaRepository
 import com.tzs.myteaapplication.viewmodel.TeaListViewModelFactory
 
 
@@ -65,7 +66,8 @@ class TeaListFragment : Fragment() {
     private fun createViewModel() :TeaListViewModel{
         val application = requireNotNull(this.activity).application
         val datasource = AppDatabase.getInstance(application).teaDatabaseDao
-        val viewModelFactory = TeaListViewModelFactory(datasource, application)
+        var repository = TeaRepository(datasource)
+        val viewModelFactory = TeaListViewModelFactory(repository, application)
         return ViewModelProviders.of(this, viewModelFactory).get(TeaListViewModel::class.java)
     }
 

@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.tzs.myteaapplication.Model.Tea
+import com.tzs.myteaapplication.models.Tea
 
 class MainActivity : AppCompatActivity() {
     var currentTea: Tea? = null

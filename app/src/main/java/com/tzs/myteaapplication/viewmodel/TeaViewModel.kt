@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.tzs.myteaapplication.Model.Tea
+import com.tzs.myteaapplication.models.Tea
 import java.util.*
 import kotlin.concurrent.schedule
 import kotlin.concurrent.timer

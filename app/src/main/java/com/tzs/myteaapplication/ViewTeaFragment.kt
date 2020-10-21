@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.tzs.myteaapplication.Model.Tea
+import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.viewmodel.TeaViewModel
 import com.tzs.myteaapplication.viewmodel.TeaViewModelFactory
 import com.tzs.myteaapplication.databinding.FragmentViewTeaBinding

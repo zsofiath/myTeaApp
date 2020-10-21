@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.tzs.myteaapplication.Model.TeaTypes
+import com.tzs.myteaapplication.models.TeaTypes
 import com.tzs.myteaapplication.R
 import com.tzs.myteaapplication.TeaItemViewHolder
 import com.tzs.myteaapplication.TeaTypeViewHolder

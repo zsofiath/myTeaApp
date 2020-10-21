@@ -1,4 +1,4 @@
-package com.tzs.myteaapplication.Model
+package com.tzs.myteaapplication.models
 
 enum class TeaTypes {
     WHITE,

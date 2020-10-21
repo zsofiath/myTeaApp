@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "tea_table")
-data class Tea (
+data class TeaEntity (
 
     @PrimaryKey(autoGenerate = true)
     var teaId: Int = 0,

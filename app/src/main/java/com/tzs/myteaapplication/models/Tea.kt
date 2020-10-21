@@ -1,4 +1,4 @@
-package com.tzs.myteaapplication.Model
+package com.tzs.myteaapplication.models
 
 class Tea(val id:Int) {
     var name: String? = null

@@ -6,17 +6,17 @@ import androidx.room.*
 @Dao
 interface TeaDatabaseDao {
     @Insert
-    suspend fun insert(tea: Tea)
+    suspend fun insert(tea: TeaEntity)
 
     @Update
-    fun update (tea: Tea)
+    fun update (tea: TeaEntity)
 
     @Query("SELECT * FROM tea_table where teaId = :key")
-    fun get (key: Int): Tea
+    fun get (key: Int): TeaEntity
 
     @Query("SELECT * FROM tea_table")
-    fun getAllTea (): LiveData<List<Tea>>
+    fun getAllTea (): LiveData<List<TeaEntity>>
 
     @Delete
-    fun deleteTea(tea: Tea)
+    fun deleteTea(tea: TeaEntity)
 }
