@@ -11,6 +11,12 @@ buildscript {
         version_lifecycle = "2.2.0"
         version_navigation = '1.0.0'
         version_room = "2.2.5"
+        androidXVersion = '1.0.0'
+        androidXTestCoreVersion = '1.2.0'
+        androidXTestExtKotlinRunnerVersion = '1.1.1'
+        androidXTestRulesVersion = '1.2.0-beta01'
+        androidXAnnotations = '1.0.1'
+        robolectricVersion = '4.3.1'
     }
     repositories {
         google()
