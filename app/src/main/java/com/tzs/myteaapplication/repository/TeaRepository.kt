@@ -6,8 +6,20 @@ import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.database.TeaDatabaseDao
 import com.tzs.myteaapplication.database.TeaEntity
 
-class TeaRepository(val database: TeaDatabaseDao) {
-    fun getAllTea(): LiveData<List<Tea>> {
+class TeaRepository(val database: TeaDatabaseDao): ITeaRepository {
+    override fun insert(tea: Tea) {
+        TODO("Not yet implemented")
+    }
+
+    override fun update(tea: Tea) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getTea(id: Int): Tea {
+        TODO("Not yet implemented")
+    }
+
+    override fun getAllTea(): LiveData<List<Tea>> {
         val databaseTeaList = database.getAllTea()
 
         val teaEntities: LiveData<List<TeaEntity>> = database.getAllTea()
@@ -17,6 +29,11 @@ class TeaRepository(val database: TeaDatabaseDao) {
 
         return teas
     }
+
+    override fun delete(tea: Tea) {
+        TODO("Not yet implemented")
+    }
+
 
     private fun createTeaList(list: List<TeaEntity>): List<Tea>{
         return list.map {

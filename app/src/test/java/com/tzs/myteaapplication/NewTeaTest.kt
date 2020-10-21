@@ -1,7 +1,7 @@
 package com.tzs.myteaapplication
 
-import com.tzs.myteaapplication.Model.Tea
-import com.tzs.myteaapplication.Model.TeaTypes
+import com.tzs.myteaapplication.models.Tea
+import com.tzs.myteaapplication.models.TeaTypes
 import org.junit.Assert
 import org.junit.Test
 

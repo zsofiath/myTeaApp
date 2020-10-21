@@ -7,11 +7,12 @@ import com.amitshekhar.DebugDB
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.database.AppDatabase
 import com.tzs.myteaapplication.database.TeaDatabaseDao
+import com.tzs.myteaapplication.repository.ITeaRepository
 import com.tzs.myteaapplication.repository.TeaRepository
 import kotlinx.coroutines.launch
 
 class TeaListViewModel(
-    val repository: TeaRepository,
+    val repository: ITeaRepository,
     application: Application
 ): ViewModel() {
 
