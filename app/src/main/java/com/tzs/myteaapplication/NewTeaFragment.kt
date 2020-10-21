@@ -15,6 +15,7 @@ import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.models.TeaTypes
 import com.tzs.myteaapplication.database.AppDatabase
 import com.tzs.myteaapplication.databinding.FragmentEditTeaBinding
+import com.tzs.myteaapplication.repository.TeaRepository
 import com.tzs.myteaapplication.viewmodel.EditTeaViewModel
 import com.tzs.myteaapplication.viewmodel.EditTeaViewModelFactory
 import com.tzs.myteaapplication.viewmodel.TeaListViewModel
@@ -46,7 +47,8 @@ class NewTeaFragment : Fragment() {
     private fun createViewModel() :EditTeaViewModel{
         val application = requireNotNull(this.activity).application
         val datasource = AppDatabase.getInstance(application).teaDatabaseDao
-        val viewModelFactory = EditTeaViewModelFactory(datasource, application)
+        var repository = TeaRepository(datasource)
+        val viewModelFactory = EditTeaViewModelFactory(repository, application)
         return ViewModelProviders.of(this, viewModelFactory).get(EditTeaViewModel::class.java)
     }
 

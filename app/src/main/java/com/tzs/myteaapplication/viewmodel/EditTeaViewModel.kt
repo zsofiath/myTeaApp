@@ -10,11 +10,13 @@ import com.amitshekhar.DebugDB
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.models.TeaTypes
 import com.tzs.myteaapplication.database.TeaDatabaseDao
+import com.tzs.myteaapplication.repository.ITeaRepository
+import com.tzs.myteaapplication.repository.TeaRepository
 import kotlinx.coroutines.launch
 import java.util.stream.Collectors.toList
 
 class EditTeaViewModel(
-    val database: TeaDatabaseDao,
+    val repository: ITeaRepository,
     application: Application
 ): ViewModel() {
     var currentTea_Name = ""
@@ -36,12 +38,12 @@ class EditTeaViewModel(
 
     private fun prepareAndSave() {
         viewModelScope.launch {
-            /*val newTea = com.tzs.myteaapplication.database.Tea()
+            val newTea = Tea(0)
             newTea.name = currentTea_Name
-            newTea.temperature = currentTea_BrewingTemperature.toInt()
+            newTea.temp = currentTea_BrewingTemperature.toInt()
             newTea.amount = currentTea_AmountOfLeaf.toInt()
 
-            insert(newTea)*/
+            repository.insert(newTea)
         }
     }
 

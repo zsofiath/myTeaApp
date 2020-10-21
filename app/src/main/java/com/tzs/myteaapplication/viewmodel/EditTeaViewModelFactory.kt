@@ -4,13 +4,15 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tzs.myteaapplication.database.TeaDatabaseDao
+import com.tzs.myteaapplication.repository.ITeaRepository
+import com.tzs.myteaapplication.repository.TeaRepository
 
-class EditTeaViewModelFactory(private val database: TeaDatabaseDao,
+class EditTeaViewModelFactory(private val repository: ITeaRepository,
                               private val application: Application
 ) : ViewModelProvider.Factory  {
     override fun <T : ViewModel?>  create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(EditTeaViewModel::class.java)) {
-            return EditTeaViewModel(database, application) as T
+            return EditTeaViewModel(repository, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
