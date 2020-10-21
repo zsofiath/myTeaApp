@@ -6,17 +6,19 @@ import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.database.TeaDatabaseDao
 import com.tzs.myteaapplication.database.TeaEntity
 
+
 class TeaRepository(val database: TeaDatabaseDao): ITeaRepository {
-    override fun insert(tea: Tea) {
-        TODO("Not yet implemented")
+
+    override suspend fun insert(tea: Tea){
+        database.insert(createTeaEntity(tea))
     }
 
-    override fun update(tea: Tea) {
-        TODO("Not yet implemented")
+    override suspend fun update(tea: Tea) {
+        database.update(createTeaEntity(tea))
     }
 
-    override fun getTea(id: Int): Tea {
-        TODO("Not yet implemented")
+    override suspend fun getTea(id: Int): Tea {
+        return createTea(database.get(id))
     }
 
     override fun getAllTea(): LiveData<List<Tea>> {
@@ -30,8 +32,8 @@ class TeaRepository(val database: TeaDatabaseDao): ITeaRepository {
         return teas
     }
 
-    override fun delete(tea: Tea) {
-        TODO("Not yet implemented")
+    override suspend fun delete(tea: Tea) {
+        database.deleteTea(createTeaEntity(tea))
     }
 
 
@@ -48,5 +50,13 @@ class TeaRepository(val database: TeaDatabaseDao): ITeaRepository {
         tea.amount = teaEntity.amount
         tea.temp = teaEntity.temperature
         return tea
+    }
+
+    private fun createTeaEntity(tea: Tea): TeaEntity{
+        var teaEntity = TeaEntity()
+        teaEntity.name = ""+tea.name
+        teaEntity.amount = tea.amount!!
+        teaEntity.temperature = tea.temp!!
+        return teaEntity
     }
 }

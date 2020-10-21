@@ -5,10 +5,10 @@ import com.tzs.myteaapplication.models.Tea
 
 interface ITeaRepository {
 
-    fun insert(tea: Tea)
-    fun update(tea: Tea)
-    fun getTea(id: Int) : Tea
+    suspend fun insert(tea: Tea)
+    suspend fun update(tea: Tea)
+    suspend fun getTea(id: Int) : Tea
     fun getAllTea(): LiveData<List<Tea>>
-    fun delete(tea: Tea)
+    suspend fun delete(tea: Tea)
 
 }
