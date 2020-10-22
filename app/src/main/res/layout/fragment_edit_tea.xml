@@ -117,43 +117,43 @@
             app:layout_constraintTop_toBottomOf="@+id/tea_type_label">
 
             <RadioButton
-                android:id="@+id/teaType_green"
+                android:id="@+id/GREEN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Green" />
 
             <RadioButton
-                android:id="@+id/teaType_black"
+                android:id="@+id/BLACK"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Black" />
 
             <RadioButton
-                android:id="@+id/teaType_white"
+                android:id="@+id/WHITE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="White" />
 
             <RadioButton
-                android:id="@+id/teaType_oolong"
+                android:id="@+id/OOLONG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Oolong" />
 
             <RadioButton
-                android:id="@+id/teaType_puerh"
+                android:id="@+id/PUERH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Puerh" />
 
             <RadioButton
-                android:id="@+id/teaType_yellow"
+                android:id="@+id/YELLOW"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Yellow" />
 
             <RadioButton
-                android:id="@+id/teaType_herbal"
+                android:id="@+id/HERBAL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Herbal" />
