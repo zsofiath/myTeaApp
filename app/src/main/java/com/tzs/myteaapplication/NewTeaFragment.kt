@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.tzs.myteaapplication.Adapters.TeaListItemAdapter
-import com.tzs.myteaapplication.Adapters.TeaTypeAdapter
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.models.TeaTypes
 import com.tzs.myteaapplication.database.AppDatabase
@@ -34,7 +33,7 @@ class NewTeaFragment : Fragment() {
         setFragmentTitle("Create new tea")
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
 
-        val adapter = TeaTypeAdapter()
+
         //binding.teaTypeList.adapter = adapter
 
 
@@ -42,7 +41,6 @@ class NewTeaFragment : Fragment() {
 
         viewModel = createViewModel()
         binding.editTeaViewModel = viewModel
-        adapter.data = viewModel.teaTypes
         radioChange(binding)
         setBindings(binding)
         setHasOptionsMenu(true)
