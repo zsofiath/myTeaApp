@@ -7,12 +7,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amitshekhar.DebugDB
+import com.tzs.myteaapplication.R
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.models.TeaTypes
 import com.tzs.myteaapplication.database.TeaDatabaseDao
 import com.tzs.myteaapplication.repository.ITeaRepository
 import com.tzs.myteaapplication.repository.TeaRepository
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.util.stream.Collectors.toList
 
 class EditTeaViewModel(
@@ -22,6 +24,8 @@ class EditTeaViewModel(
     var currentTea_Name = ""
     var currentTea_AmountOfLeaf = ""
     var currentTea_BrewingTemperature = ""
+    var currentTea_type: TeaTypes? = null
+
     lateinit var teaTypes:List<TeaTypes>
 
     init {
@@ -36,12 +40,28 @@ class EditTeaViewModel(
         return false;
     }
 
+    public fun onTypeSelected(checkedId: Int) {
+        when (checkedId) {
+            R.id.WHITE -> currentTea_type = TeaTypes.WHITE
+            R.id.BLACK -> currentTea_type = TeaTypes.BLACK
+            R.id.HERBAL -> currentTea_type = TeaTypes.HERBAL
+            R.id.PUERH -> currentTea_type = TeaTypes.PUERH
+            R.id.GREEN -> currentTea_type = TeaTypes.GREEN
+            R.id.OOLONG -> currentTea_type = TeaTypes.OOLONG
+            R.id.YELLOW -> currentTea_type = TeaTypes.YELLOW
+            else -> {
+                throw Exception("Tea Type not found.")
+            }
+        }
+    }
+
     private fun prepareAndSave() {
         viewModelScope.launch {
             val newTea = Tea(0)
             newTea.name = currentTea_Name
             newTea.temp = currentTea_BrewingTemperature.toInt()
             newTea.amount = currentTea_AmountOfLeaf.toInt()
+            newTea.type = currentTea_type
 
             repository.insert(newTea)
         }

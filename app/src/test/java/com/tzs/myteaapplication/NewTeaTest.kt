@@ -36,9 +36,13 @@ class NewTeaTest {
         listViewModel.currentTea_Name = "Bai Mu Dan"
         listViewModel.currentTea_AmountOfLeaf = "5"
         listViewModel.currentTea_BrewingTemperature = "80"
+        listViewModel.currentTea_type = TeaTypes.BLACK
 
         listViewModel.saveTea()
 
-        Assert.assertEquals(teas[3].name, "Bai Mu Dan")
+        Assert.assertEquals("Bai Mu Dan", teas[3].name)
+        Assert.assertEquals(80, teas[3].temp)
+        Assert.assertEquals(5, teas[3].amount)
+        Assert.assertEquals(TeaTypes.BLACK, teas[3].type)
     }
 }

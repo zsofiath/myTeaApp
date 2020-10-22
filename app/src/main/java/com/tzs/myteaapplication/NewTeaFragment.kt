@@ -3,6 +3,7 @@ package com.tzs.myteaapplication
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -36,21 +37,20 @@ class NewTeaFragment : Fragment() {
         val adapter = TeaTypeAdapter()
         //binding.teaTypeList.adapter = adapter
 
+
+
+
         viewModel = createViewModel()
         binding.editTeaViewModel = viewModel
         adapter.data = viewModel.teaTypes
+        radioChange(binding)
         setBindings(binding)
         setHasOptionsMenu(true)
         return binding.root
     }
 
-    private fun createViewModel() :EditTeaViewModel{
-        val application = requireNotNull(this.activity).application
-        val datasource = AppDatabase.getInstance(application).teaDatabaseDao
-        var repository = TeaRepository(datasource)
-        val viewModelFactory = EditTeaViewModelFactory(repository, application)
-        return ViewModelProviders.of(this, viewModelFactory).get(EditTeaViewModel::class.java)
-    }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -76,5 +76,19 @@ class NewTeaFragment : Fragment() {
 
     private fun setBindings(binding: FragmentEditTeaBinding){
         binding.viewedTea = "Edit "+(activity as MainActivity?)?.currentTea?.name
+    }
+
+    private fun radioChange(binding: FragmentEditTeaBinding) {
+        binding.radioGroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
+            viewModel.onTypeSelected(checkedId)
+        })
+    }
+
+    private fun createViewModel() :EditTeaViewModel{
+        val application = requireNotNull(this.activity).application
+        val datasource = AppDatabase.getInstance(application).teaDatabaseDao
+        var repository = TeaRepository(datasource)
+        val viewModelFactory = EditTeaViewModelFactory(repository, application)
+        return ViewModelProviders.of(this, viewModelFactory).get(EditTeaViewModel::class.java)
     }
 }
