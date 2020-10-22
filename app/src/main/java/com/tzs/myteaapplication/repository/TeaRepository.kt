@@ -5,6 +5,7 @@ import androidx.lifecycle.Transformations
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.database.TeaDatabaseDao
 import com.tzs.myteaapplication.database.TeaEntity
+import com.tzs.myteaapplication.models.TeaTypes
 
 
 class TeaRepository(val database: TeaDatabaseDao): ITeaRepository {
@@ -49,6 +50,7 @@ class TeaRepository(val database: TeaDatabaseDao): ITeaRepository {
         tea.name = teaEntity.name
         tea.amount = teaEntity.amount
         tea.temp = teaEntity.temperature
+        tea.type =  TeaTypes.valueOf(teaEntity.type)
         return tea
     }
 
@@ -57,6 +59,7 @@ class TeaRepository(val database: TeaDatabaseDao): ITeaRepository {
         teaEntity.name = ""+tea.name
         teaEntity.amount = tea.amount!!
         teaEntity.temperature = tea.temp!!
+        teaEntity.type = tea.type.toString()
         return teaEntity
     }
 }

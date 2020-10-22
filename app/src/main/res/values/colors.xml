@@ -3,4 +3,12 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="BLACK">#FF8A80</color>
+    <color name="WHITE">#E9EDEA</color>
+    <color name="GREEN">#CCFF90</color>
+    <color name="YELLOW">#FFE57F</color>
+    <color name="PUERH">#B388FF</color>
+    <color name="OOLONG">#82B1FF</color>
+    <color name="HERBAL">#84FFFF</color>
+    <color name="def">#838383</color>
 </resources>
