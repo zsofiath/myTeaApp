@@ -28,7 +28,7 @@ class ViewTeaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        initCurrentTea()
+        setFragmentTitle(Tea.currentTea?.name)
         val args = getArgumantsFromBundle()
 
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
@@ -41,17 +41,6 @@ class ViewTeaFragment : Fragment() {
 
         setHasOptionsMenu(true)
         return binding.root
-    }
-
-    fun initCurrentTea(){
-        (activity as MainActivity?)?.currentTea = Tea(10)
-        (activity as MainActivity?)?.currentTea?.name = "Keemun"
-
-        // fetch tea from db
-        // ==========================================================
-        // ==========================================================
-        currentTea  = (activity as MainActivity?)?.currentTea
-        setFragmentTitle(currentTea?.name)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

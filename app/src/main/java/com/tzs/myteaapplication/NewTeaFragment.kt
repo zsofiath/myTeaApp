@@ -73,7 +73,7 @@ class NewTeaFragment : Fragment() {
     }
 
     private fun setBindings(binding: FragmentEditTeaBinding){
-        binding.viewedTea = "Edit "+(activity as MainActivity?)?.currentTea?.name
+        binding.viewedTea = Tea.currentTea?.name
     }
 
     private fun radioChange(binding: FragmentEditTeaBinding) {

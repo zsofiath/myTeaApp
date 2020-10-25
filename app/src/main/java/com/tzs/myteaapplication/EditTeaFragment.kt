@@ -27,8 +27,7 @@ class EditTeaFragment : Fragment() {
     }
 
     fun initTea(){
-        currentTea = (activity as MainActivity?)?.currentTea
-        setFragmentTitle("Edit "+currentTea?.name)
+        setFragmentTitle("Edit "+Tea.currentTea?.name)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -54,7 +53,7 @@ class EditTeaFragment : Fragment() {
     }
 
     private fun setBindings(binding: FragmentEditTeaBinding){
-        binding.viewedTea = "Edit "+(activity as MainActivity?)?.currentTea?.name
+        //binding.viewedTea = "Edit "+(activity as MainActivity?)?.currentTea?.name
     }
 
 }

@@ -7,7 +7,7 @@ import androidx.navigation.ui.NavigationUI
 import com.tzs.myteaapplication.models.Tea
 
 class MainActivity : AppCompatActivity() {
-    var currentTea: Tea? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

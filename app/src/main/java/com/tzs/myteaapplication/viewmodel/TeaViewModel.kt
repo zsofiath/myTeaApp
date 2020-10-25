@@ -34,12 +34,6 @@ class TeaViewModel(teaId: Int): ViewModel() {
         Log.i("TeaViewModel", "TeaViewModel destroyed")
     }
 
-    fun fetchTea(id: Int): Tea {
-        var tea = Tea(id)
-        tea.name = "King of Puerh"
-        return tea
-    }
-
 
     private fun decreaseValue(countDownValue: MutableLiveData<Int>){
         countDownValue.value = (countDownValue.value)?.minus(1)

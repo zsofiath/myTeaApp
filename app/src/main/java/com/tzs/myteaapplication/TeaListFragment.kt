@@ -16,6 +16,7 @@ import com.tzs.myteaapplication.database.AppDatabase
 import com.tzs.myteaapplication.viewmodel.TeaListViewModel
 import com.tzs.myteaapplication.databinding.FragmentTeaListBinding
 import com.tzs.myteaapplication.listeners.TeaItemClickListener
+import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.repository.TeaRepository
 import com.tzs.myteaapplication.viewmodel.TeaListViewModelFactory
 
@@ -61,6 +62,7 @@ class TeaListFragment : Fragment() {
     private fun fetchTeaAndNavigate(teaId: Int){
         viewModel.fetchTea(teaId).observe(viewLifecycleOwner, Observer {
             it?.let {
+                Tea.currentTea = it
                 findNavController().navigate(TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(teaId))
             }
         })
@@ -87,7 +89,7 @@ class TeaListFragment : Fragment() {
     }
 
     private fun clearCurrentTea(){
-        (activity as MainActivity?)?.currentTea = null
+        Tea.currentTea = null
     }
 
     private fun getBindingObjectWithLayoutInflate(inflater:LayoutInflater, container: ViewGroup?): FragmentTeaListBinding{
