@@ -63,7 +63,7 @@
             android:layout_height="45dp"
             android:ems="10"
             android:inputType="number"
-            android:text="@={EditTeaViewModel.currentTea_AmountOfLeaf}"
+            android:text="@={EditTeaViewModel.currentTea_BrewingTemperature}"
             app:layout_constraintEnd_toStartOf="@+id/temperature_unit"
             app:layout_constraintStart_toStartOf="@+id/temperature_label"
             app:layout_constraintTop_toBottomOf="@+id/temperature_label" />
@@ -85,7 +85,7 @@
             android:layout_margin="0dp"
             android:ems="10"
             android:inputType="number"
-            android:text="@={EditTeaViewModel.currentTea_BrewingTemperature}"
+            android:text="@={EditTeaViewModel.currentTea_AmountOfLeaf}"
             app:layout_constraintStart_toStartOf="@+id/amount_label"
             app:layout_constraintEnd_toStartOf="@+id/amount_unit"
             app:layout_constraintTop_toBottomOf="@+id/amount_label" />

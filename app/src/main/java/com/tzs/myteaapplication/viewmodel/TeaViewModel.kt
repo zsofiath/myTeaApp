@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tzs.myteaapplication.models.Tea
+import com.tzs.myteaapplication.models.TeaTypes
 import java.util.*
 import kotlin.concurrent.schedule
 import kotlin.concurrent.timer
@@ -17,7 +18,10 @@ import kotlin.math.log
 class TeaViewModel(teaId: Int): ViewModel() {
 
     var currentTea: Tea? = null
-
+    var currentTea_Name = ""
+    var currentTea_AmountOfLeaf = ""
+    var currentTea_BrewingTemperature = ""
+    var currentTea_type = ""
 
     private var timer: CountDownTimer? = null
 
@@ -26,7 +30,11 @@ class TeaViewModel(teaId: Int): ViewModel() {
         get() = _countDownValue
 
     init {
-        Log.i("TeaViewModel", "TeaViewModel created. ID: $teaId")
+        currentTea = Tea.currentTea
+
+        currentTea_AmountOfLeaf = Tea.currentTea?.amount.toString()+"g/100ml"
+        currentTea_BrewingTemperature = Tea.currentTea?.temp.toString()+"C°"
+        currentTea_type = Tea.currentTea?.type.toString()
     }
 
     override fun onCleared() {

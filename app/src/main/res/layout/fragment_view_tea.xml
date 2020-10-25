@@ -9,7 +9,6 @@
             name="teaViewModel"
             type="com.tzs.myteaapplication.viewmodel.TeaViewModel"
             />
-
         <variable
             name="ViewedTea"
             type="String" />
@@ -18,38 +17,60 @@
             type="String" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/header_background_dark">
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/temperature"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@={ViewedTea}" />
-
-        <Button
-            android:id="@+id/countDownButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={countDown}" />
-
-        <Button
-            android:id="@+id/countDownButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="@{()->teaViewModel.startCountDown(50)}"
-            android:text="@={countDown}" />
+            android:text="@{teaViewModel.currentTea_BrewingTemperature}"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{String.valueOf(teaViewModel.countDownValue)}" />
+            android:text="@{teaViewModel.currentTea_type}"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/amount"
+            app:layout_constraintStart_toEndOf="@+id/temperature"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{teaViewModel.currentTea_AmountOfLeaf}"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/type"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:background="@color/WHITE"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
 
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>
