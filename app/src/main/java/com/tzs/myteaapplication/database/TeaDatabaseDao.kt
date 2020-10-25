@@ -12,7 +12,7 @@ interface TeaDatabaseDao {
     fun update (tea: TeaEntity)
 
     @Query("SELECT * FROM tea_table where teaId = :key")
-    fun get (key: Int): TeaEntity
+    suspend fun get (key: Int): TeaEntity
 
     @Query("SELECT * FROM tea_table")
     fun getAllTea (): LiveData<List<TeaEntity>>

@@ -34,22 +34,36 @@ class TeaListFragment : Fragment() {
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
         viewModel = createViewModel()
         binding.teaListViewModel = viewModel
-        binding.addNewTea.setOnClickListener({v: View -> v.findNavController().navigate(R.id.action_teaListFragment_to_newTeaFragment2)})
+        clickAddNewTea(binding)
 
-        val adapter = setTeaListItemAdapter(binding)
+        val adapter = setTeaListItemAdapter(binding, viewModel)
 
         notifyTeaListChanges(adapter)
 
         return binding.root
     }
 
-    private fun setTeaListItemAdapter(binding: FragmentTeaListBinding): TeaListItemAdapter {
+    private fun clickAddNewTea(binding: FragmentTeaListBinding) {
+        binding.addNewTea.setOnClickListener{ v: View ->
+            v.findNavController().navigate(R.id.action_teaListFragment_to_newTeaFragment2)
+        }
+    }
+
+    private fun setTeaListItemAdapter(binding: FragmentTeaListBinding, viewModel: TeaListViewModel): TeaListItemAdapter {
         val adapter = TeaListItemAdapter(TeaItemClickListener { teaId ->
-            findNavController().navigate(TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(teaId))
+            fetchTeaAndNavigate(teaId)
         })
 
         binding.teaList.adapter = adapter
         return adapter
+    }
+
+    private fun fetchTeaAndNavigate(teaId: Int){
+        viewModel.fetchTea(teaId).observe(viewLifecycleOwner, Observer {
+            it?.let {
+                findNavController().navigate(TeaListFragmentDirections.actionTeaListFragmentToViewTeaFragment(teaId))
+            }
+        })
     }
 
     private fun createViewModel() :TeaListViewModel{

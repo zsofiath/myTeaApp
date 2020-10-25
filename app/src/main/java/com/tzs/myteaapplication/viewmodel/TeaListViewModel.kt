@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class TeaListViewModel(
     val repository: ITeaRepository,
-    application: Application
+    val application: Application
 ): ViewModel() {
 
 
@@ -26,6 +26,17 @@ class TeaListViewModel(
     }
 
 
+    fun fetchTea(teaId: Int): LiveData<Tea> {
+        var teaLive: MutableLiveData<Tea> = MutableLiveData()
+        viewModelScope.launch {
+            teaLive.value = getTea(teaId)
+        }
+        return  teaLive
+    }
+
+    suspend fun getTea(teaId: Int):Tea {
+        return repository.getTea(teaId)
+    }
 
     override fun onCleared() {
         super.onCleared()
