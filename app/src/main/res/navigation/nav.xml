@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_teaListFragment_to_viewTeaFragment"
             app:destination="@id/viewTeaFragment" />
+        <action
+            android:id="@+id/action_teaListFragment_to_newTeaFragment2"
+            app:destination="@id/newTeaFragment2" />
     </fragment>
     <fragment
         android:id="@+id/viewTeaFragment"
@@ -24,17 +27,7 @@
             app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/newTeaFragment"
-        android:name="com.tzs.myteaapplication.EditTeaFragment"
-        android:label="fragment_edit_tea"
-        tools:layout="@layout/fragment_edit_tea" >
-        <argument
-            android:name="CurrentTeaID"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/newTeaFragment"
+        android:id="@+id/newTeaFragment2"
         android:name="com.tzs.myteaapplication.NewTeaFragment"
-        android:label="fragment_new_tea"
-        tools:layout="@layout/fragment_new_tea" />
+        android:label="NewTeaFragment" />
 </navigation>

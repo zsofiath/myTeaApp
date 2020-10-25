@@ -8,25 +8,13 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="editTeaFragment">
+                  <entry key="newTeaFragment2">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="182" />
-                            <option name="y" value="514" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="newTeaFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-169" />
-                            <option name="y" value="453" />
+                            <option name="x" value="-127" />
+                            <option name="y" value="-66" />
                           </Point>
                         </option>
                       </LayoutPositions>

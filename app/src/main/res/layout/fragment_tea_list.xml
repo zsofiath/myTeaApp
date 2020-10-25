@@ -16,13 +16,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.tzs.myteaapplication.TeaListFragment">
-        <androidx.recyclerview.widget.RecyclerView
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/header_background"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/add_new_tea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:background="@android:drawable/picture_frame"
+                android:padding="20dp"
+                android:paddingLeft="34dp"
+                android:paddingRight="34dp"
+                android:text="Add your new tea!"
+                android:textColor="@color/header_background_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tea_list"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:orientation="vertical"
-            ></androidx.recyclerview.widget.RecyclerView>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"></androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -34,12 +34,12 @@ class TeaListFragment : Fragment() {
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
         viewModel = createViewModel()
         binding.teaListViewModel = viewModel
+        binding.addNewTea.setOnClickListener({v: View -> v.findNavController().navigate(R.id.action_teaListFragment_to_newTeaFragment2)})
 
         val adapter = setTeaListItemAdapter(binding)
 
         notifyTeaListChanges(adapter)
 
-        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -50,17 +50,6 @@ class TeaListFragment : Fragment() {
 
         binding.teaList.adapter = adapter
         return adapter
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.tea_list_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item!!,
-            view!!.findNavController())
-                || super.onOptionsItemSelected(item)
     }
 
     private fun createViewModel() :TeaListViewModel{
