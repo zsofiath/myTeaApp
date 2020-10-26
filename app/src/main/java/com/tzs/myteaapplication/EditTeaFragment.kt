@@ -18,7 +18,7 @@ class EditTeaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        initTea()
+        setFragmentTitle("Edit "+Tea.currentTea?.name)
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
 
         setBindings(binding)
@@ -26,9 +26,6 @@ class EditTeaFragment : Fragment() {
         return binding.root
     }
 
-    fun initTea(){
-        setFragmentTitle("Edit "+Tea.currentTea?.name)
-    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
