@@ -33,21 +33,18 @@ class NewTeaFragment : Fragment() {
         setFragmentTitle("Create new tea")
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
 
-
-        //binding.teaTypeList.adapter = adapter
-
-
-
-
         viewModel = createViewModel()
         binding.editTeaViewModel = viewModel
+        hideDeleteButton(binding)
         radioChange(binding)
         setBindings(binding)
         setHasOptionsMenu(true)
         return binding.root
     }
 
-
+    private fun hideDeleteButton(binding: FragmentEditTeaBinding) {
+        binding.deleteTea.visibility = View.GONE
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
