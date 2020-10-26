@@ -45,4 +45,41 @@ class NewTeaTest {
         Assert.assertEquals(5, teas[3].amount)
         Assert.assertEquals(TeaTypes.BLACK, teas[3].type)
     }
+
+    @Test
+    fun prepareUpdateTea(){
+        val teas = mutableListOf<Tea>()
+        val repo = FakeTeaRepository(teas)
+
+        var t = Tea(2)
+        t.name = "T2"
+        t.temp = 100
+        t.amount = 5
+        t.type = TeaTypes.PUERH
+        Tea.currentTea = t
+
+        val listViewModel = EditTeaViewModel(repo, ApplicationProvider.getApplicationContext())
+
+        Assert.assertEquals("T2", listViewModel.currentTea_Name)
+        Assert.assertEquals("5", listViewModel.currentTea_AmountOfLeaf)
+        Assert.assertEquals("100", listViewModel.currentTea_BrewingTemperature)
+        Assert.assertEquals(TeaTypes.PUERH, listViewModel.currentTea_type)
+    }
+
+    @Test
+    fun prepareUpdateTea_Type(){
+        val teas = mutableListOf<Tea>()
+        val repo = FakeTeaRepository(teas)
+
+        var t = Tea(2)
+        t.name = "T2"
+        t.temp = 100
+        t.amount = 5
+        t.type = TeaTypes.PUERH
+        Tea.currentTea = t
+
+        val listViewModel = EditTeaViewModel(repo, ApplicationProvider.getApplicationContext())
+
+        Assert.assertEquals(R.id.PUERH, listViewModel.getCheckedViewId())
+    }
 }

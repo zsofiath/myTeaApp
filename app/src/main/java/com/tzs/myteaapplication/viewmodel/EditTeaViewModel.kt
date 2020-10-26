@@ -26,10 +26,13 @@ class EditTeaViewModel(
     var currentTea_BrewingTemperature = ""
     var currentTea_type: TeaTypes? = null
 
-    lateinit var teaTypes:List<TeaTypes>
-
     init {
-        teaTypes = enumValues<TeaTypes>().toList()
+        if(Tea.currentTea != null) {
+            currentTea_Name = Tea.currentTea?.name!!
+            currentTea_AmountOfLeaf = Tea.currentTea?.amount!!.toString()
+            currentTea_BrewingTemperature = Tea.currentTea?.temp!!.toString()
+            currentTea_type = Tea.currentTea?.type
+        }
     }
 
     public fun saveTea(): Boolean {
@@ -38,6 +41,21 @@ class EditTeaViewModel(
             return true;
         }
         return false;
+    }
+
+    public fun getCheckedViewId(): Int {
+        when (currentTea_type) {
+            TeaTypes.WHITE -> return R.id.WHITE
+            TeaTypes.BLACK -> return R.id.BLACK
+            TeaTypes.HERBAL -> return R.id.HERBAL
+            TeaTypes.PUERH -> return R.id.PUERH
+            TeaTypes.GREEN -> return R.id.GREEN
+            TeaTypes.OOLONG -> return R.id.OOLONG
+            TeaTypes.YELLOW -> return R.id.YELLOW
+            else -> {
+                throw Exception("Tea Type not found.")
+            }
+        }
     }
 
     public fun onTypeSelected(checkedId: Int) {

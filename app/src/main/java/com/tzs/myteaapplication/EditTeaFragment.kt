@@ -2,17 +2,24 @@ package com.tzs.myteaapplication
 
 import android.os.Bundle
 import android.view.*
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
+import com.tzs.myteaapplication.database.AppDatabase
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.databinding.FragmentEditTeaBinding
+import com.tzs.myteaapplication.repository.TeaRepository
+import com.tzs.myteaapplication.viewmodel.EditTeaViewModel
+import com.tzs.myteaapplication.viewmodel.EditTeaViewModelFactory
 
 
 class EditTeaFragment : Fragment() {
 
     var currentTea: Tea? = null
+    private lateinit var viewModel: EditTeaViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,6 +27,12 @@ class EditTeaFragment : Fragment() {
     ): View? {
         setFragmentTitle("Edit "+Tea.currentTea?.name)
         val binding = getBindingObjectWithLayoutInflate(inflater, container)
+
+        viewModel = createViewModel()
+        binding.editTeaViewModel = viewModel
+        binding.radioGroup.check(viewModel.getCheckedViewId())
+        radioChange(binding)
+
 
         setBindings(binding)
         setHasOptionsMenu(true)
@@ -51,6 +64,20 @@ class EditTeaFragment : Fragment() {
 
     private fun setBindings(binding: FragmentEditTeaBinding){
         //binding.viewedTea = "Edit "+(activity as MainActivity?)?.currentTea?.name
+    }
+
+    private fun radioChange(binding: FragmentEditTeaBinding) {
+        binding.radioGroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
+            viewModel.onTypeSelected(checkedId)
+        })
+    }
+
+    private fun createViewModel() :EditTeaViewModel{
+        val application = requireNotNull(this.activity).application
+        val datasource = AppDatabase.getInstance(application).teaDatabaseDao
+        var repository = TeaRepository(datasource)
+        val viewModelFactory = EditTeaViewModelFactory(repository, application)
+        return ViewModelProviders.of(this, viewModelFactory).get(EditTeaViewModel::class.java)
     }
 
 }

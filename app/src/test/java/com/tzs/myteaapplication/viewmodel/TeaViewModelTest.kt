@@ -25,6 +25,5 @@ class TeaViewModelTest {
 
         Assert.assertEquals(t.amount.toString() + "g/100ml", vm.currentTea_AmountOfLeaf)
         Assert.assertEquals(t.temp.toString() + "C°", vm.currentTea_BrewingTemperature)
-
     }
 }
