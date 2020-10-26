@@ -37,7 +37,12 @@ class EditTeaViewModel(
 
     public fun saveTea(): Boolean {
         if(allDataFilled()) {
-            prepareAndSave()
+            if(Tea.currentTea != null) {
+                prepareAndUpdate(Tea.currentTea?.id!!)
+            } else {
+                prepareAndSave()
+            }
+
             return true;
         }
         return false;
@@ -82,6 +87,18 @@ class EditTeaViewModel(
             newTea.type = currentTea_type
 
             repository.insert(newTea)
+        }
+    }
+
+    private fun prepareAndUpdate(id: Int) {
+        viewModelScope.launch {
+            val newTea = Tea(id)
+            newTea.name = currentTea_Name
+            newTea.temp = currentTea_BrewingTemperature.toInt()
+            newTea.amount = currentTea_AmountOfLeaf.toInt()
+            newTea.type = currentTea_type
+
+            repository.update(newTea)
         }
     }
 

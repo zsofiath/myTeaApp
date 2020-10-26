@@ -56,6 +56,7 @@ class TeaRepository(val database: TeaDatabaseDao): ITeaRepository {
 
     private fun createTeaEntity(tea: Tea): TeaEntity{
         var teaEntity = TeaEntity()
+        teaEntity.teaId = tea.id
         teaEntity.name = ""+tea.name
         teaEntity.amount = tea.amount!!
         teaEntity.temperature = tea.temp!!

@@ -9,7 +9,7 @@ interface TeaDatabaseDao {
     suspend fun insert(tea: TeaEntity)
 
     @Update
-    fun update (tea: TeaEntity)
+    suspend  fun update (tea: TeaEntity)
 
     @Query("SELECT * FROM tea_table where teaId = :key")
     suspend fun get (key: Int): TeaEntity
