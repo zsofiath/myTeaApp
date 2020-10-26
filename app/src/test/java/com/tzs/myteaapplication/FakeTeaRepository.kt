@@ -13,11 +13,13 @@ class FakeTeaRepository(var teas: MutableList<Tea>): ITeaRepository {
     }
 
     override suspend fun update(tea: Tea) {
-        var teaItem = teas.find { t: Tea ->  t.id == tea.id}
+        /*var teaItem = teas.find { t: Tea ->  t.id == tea.id}
         teaItem?.name = tea.name
         teaItem?.temp = tea.temp
         teaItem?.type = tea.type
-        teaItem?.amount = tea.amount
+        teaItem?.amount = tea.amount*/
+
+        teas.set(tea.id, tea)
     }
 
     override suspend fun getTea(id: Int): Tea {
@@ -29,6 +31,7 @@ class FakeTeaRepository(var teas: MutableList<Tea>): ITeaRepository {
     }
 
     override suspend fun delete(tea: Tea) {
-       teas.remove(tea)
+        var filtered = teas.find { it.id == tea.id }
+        teas.remove(filtered)
     }
 }

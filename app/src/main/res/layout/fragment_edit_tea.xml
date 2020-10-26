@@ -205,24 +205,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:onClick="@{()->EditTeaViewModel.deleteTea()}"
             android:background="@color/BLACK"
             android:text="Delete tea"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-        <!--
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/brewingAmount">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/tea_type_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                ></androidx.recyclerview.widget.RecyclerView>
-        </RadioGroup>
-        -->
 
 
 

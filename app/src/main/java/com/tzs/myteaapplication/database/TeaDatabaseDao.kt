@@ -18,5 +18,5 @@ interface TeaDatabaseDao {
     fun getAllTea (): LiveData<List<TeaEntity>>
 
     @Delete
-    fun deleteTea(tea: TeaEntity)
+    suspend fun deleteTea(tea: TeaEntity)
 }

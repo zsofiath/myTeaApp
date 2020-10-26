@@ -2,6 +2,7 @@ package com.tzs.myteaapplication.viewmodel
 
 import android.app.Application
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -75,6 +76,12 @@ class EditTeaViewModel(
             else -> {
                 throw Exception("Tea Type not found.")
             }
+        }
+    }
+
+    public fun deleteTea(){
+        viewModelScope.launch {
+            repository.delete(Tea.currentTea!!)
         }
     }
 

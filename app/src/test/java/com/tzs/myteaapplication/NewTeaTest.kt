@@ -14,20 +14,33 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class NewTeaTest {
+    var teas = mutableListOf<Tea>()
+    @Before
+    fun before(){
+        Tea.currentTea = null
+        var t1 = Tea(1)
+        t1.name = "T1"
+        t1.type = TeaTypes.PUERH
+        t1.temp = 1
+        t1.amount = 11
+        var t2 = Tea(2)
+        t2.name = "T2"
+        t2.type = TeaTypes.PUERH
+        t2.temp = 2
+        t2.amount = 22
+        var t3 = Tea(3)
+        t3.name = "T3"
+        t3.type = TeaTypes.PUERH
+        t3.temp = 3
+        t3.amount = 33
+        teas.add(t1)
+        teas.add(t2)
+        teas.add(t3)
+    }
 
     @Test
     fun createNewTeaObject() {
 
-        val teas = mutableListOf<Tea>()
-        var t1 = Tea(1)
-        t1.name = "T1"
-        var t2 = Tea(2)
-        t1.name = "T2"
-        var t3 = Tea(3)
-        t1.name = "T3"
-        teas.add(t1)
-        teas.add(t2)
-        teas.add(t3)
         val repo = FakeTeaRepository(teas)
 
         val listViewModel = EditTeaViewModel(repo, ApplicationProvider.getApplicationContext())
@@ -86,16 +99,7 @@ class NewTeaTest {
     @Test
     fun UpdateTeaObject() {
 
-        val teas = mutableListOf<Tea>()
-        var t1 = Tea(1)
-        t1.name = "T1"
-        var t2 = Tea(2)
-        t1.name = "T2"
-        var t3 = Tea(3)
-        t1.name = "T3"
-        teas.add(t1)
-        teas.add(t2)
-        teas.add(t3)
+
         val repo = FakeTeaRepository(teas)
 
         val listViewModel = EditTeaViewModel(repo, ApplicationProvider.getApplicationContext())
@@ -114,5 +118,24 @@ class NewTeaTest {
         Assert.assertEquals(80, teas[2].temp)
         Assert.assertEquals(5, teas[2].amount)
         Assert.assertEquals(TeaTypes.BLACK, teas[2].type)
+    }
+
+    @Test
+    fun deleteTeaObject() {
+
+        val repo = FakeTeaRepository(teas)
+
+        var t = Tea(2)
+        t.name = "T2"
+        t.amount = 5
+        t.temp = 100
+        t.type = TeaTypes.PUERH
+        Tea.currentTea = t
+
+        val ViewModel = EditTeaViewModel(repo, ApplicationProvider.getApplicationContext())
+
+        ViewModel.deleteTea()
+
+        Assert.assertEquals(2, teas.count())
     }
 }

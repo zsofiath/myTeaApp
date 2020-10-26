@@ -33,7 +33,6 @@ class EditTeaFragment : Fragment() {
         binding.radioGroup.check(viewModel.getCheckedViewId())
         radioChange(binding)
 
-
         setBindings(binding)
         setHasOptionsMenu(true)
         return binding.root
