@@ -115,6 +115,6 @@ class EditTeaViewModel(
     }
 
     private fun allDataFilled(): Boolean {
-        return currentTea_Name != "" && currentTea_BrewingTemperature!= "" && currentTea_AmountOfLeaf != ""
+        return currentTea_Name != "" && currentTea_BrewingTemperature!= "" && currentTea_AmountOfLeaf != "" && currentTea_type != null
     }
 }

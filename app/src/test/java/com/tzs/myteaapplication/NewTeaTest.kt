@@ -62,6 +62,90 @@ class NewTeaTest {
         Assert.assertEquals(5, teas[3].amount)
         Assert.assertEquals(TeaTypes.BLACK, teas[3].type)
         Assert.assertEquals(7, callbackTest)
+        Assert.assertEquals(4, teas.count())
+    }
+
+    fun createNewTeaObject_missingData_amount() {
+
+        val repo = FakeTeaRepository(teas)
+
+        val listViewModel = EditTeaViewModel(repo)
+
+
+        listViewModel.currentTea_Name = "Bai Mu Dan"
+        listViewModel.currentTea_BrewingTemperature = "80"
+        listViewModel.currentTea_type = TeaTypes.BLACK
+
+        var callbackTest = 4
+        listViewModel.saveTea{
+            callbackTest = 7
+        }
+
+
+        Assert.assertEquals(4, callbackTest)
+        Assert.assertEquals(3, teas.count())
+    }
+
+    fun createNewTeaObject_missingData_temp() {
+
+        val repo = FakeTeaRepository(teas)
+
+        val listViewModel = EditTeaViewModel(repo)
+
+
+        listViewModel.currentTea_Name = "Bai Mu Dan"
+        listViewModel.currentTea_AmountOfLeaf = "80"
+        listViewModel.currentTea_type = TeaTypes.BLACK
+
+        var callbackTest = 4
+        listViewModel.saveTea{
+            callbackTest = 7
+        }
+
+
+        Assert.assertEquals(4, callbackTest)
+        Assert.assertEquals(3, teas.count())
+    }
+    fun createNewTeaObject_missingData_name() {
+
+        val repo = FakeTeaRepository(teas)
+
+        val listViewModel = EditTeaViewModel(repo)
+
+
+        listViewModel.currentTea_BrewingTemperature = "100"
+        listViewModel.currentTea_AmountOfLeaf = "80"
+        listViewModel.currentTea_type = TeaTypes.BLACK
+
+        var callbackTest = 4
+        listViewModel.saveTea{
+            callbackTest = 7
+        }
+
+
+        Assert.assertEquals(4, callbackTest)
+        Assert.assertEquals(3, teas.count())
+    }
+
+    fun createNewTeaObject_missingData_type() {
+
+        val repo = FakeTeaRepository(teas)
+
+        val listViewModel = EditTeaViewModel(repo)
+
+
+        listViewModel.currentTea_Name = "Bai Mu Dan"
+        listViewModel.currentTea_BrewingTemperature = "80"
+        listViewModel.currentTea_BrewingTemperature = "10"
+
+        var callbackTest = 4
+        listViewModel.saveTea{
+            callbackTest = 7
+        }
+
+
+        Assert.assertEquals(4, callbackTest)
+        Assert.assertEquals(3, teas.count())
     }
 
     @Test
