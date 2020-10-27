@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.tzs.myteaapplication.Adapters.TeaListItemAdapter
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.models.TeaTypes
@@ -54,7 +55,8 @@ class NewTeaFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.toString() == "Save tea") {
-            viewModel.saveTea{
+            viewModel.saveTea {
+                findNavController().navigate(NewTeaFragmentDirections.actionNewTeaFragment2ToViewTeaFragment(0))
                 Toast.makeText(context, "Tea saved: "+viewModel.currentTea_Name, Toast.LENGTH_LONG).show()
             }
 

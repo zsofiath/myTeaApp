@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.tzs.myteaapplication.database.AppDatabase
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.databinding.FragmentEditTeaBinding
@@ -53,7 +54,8 @@ class EditTeaFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         if(item.title == "Save tea") {
-            viewModel.saveTea{
+            viewModel.saveTea {
+                findNavController().navigate(EditTeaFragmentDirections.actionEditTeaFragmentToViewTeaFragment(0))
                 Toast.makeText(context, "Tea updated", Toast.LENGTH_LONG).show()
             }
         }
