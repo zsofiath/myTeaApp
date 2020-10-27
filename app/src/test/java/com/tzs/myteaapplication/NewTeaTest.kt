@@ -51,12 +51,17 @@ class NewTeaTest {
         listViewModel.currentTea_BrewingTemperature = "80"
         listViewModel.currentTea_type = TeaTypes.BLACK
 
-        listViewModel.saveTea()
+        var callbackTest = 4
+        listViewModel.saveTea{
+            callbackTest = 7
+        }
 
         Assert.assertEquals("Bai Mu Dan", teas[3].name)
+        Assert.assertEquals("Bai Mu Dan", Tea.currentTea?.name)
         Assert.assertEquals(80, teas[3].temp)
         Assert.assertEquals(5, teas[3].amount)
         Assert.assertEquals(TeaTypes.BLACK, teas[3].type)
+        Assert.assertEquals(7, callbackTest)
     }
 
     @Test
@@ -112,12 +117,17 @@ class NewTeaTest {
         listViewModel.currentTea_BrewingTemperature = "80"
         listViewModel.currentTea_type = TeaTypes.BLACK
 
-        listViewModel.saveTea()
+        var callbackTest = 4
+        listViewModel.saveTea {
+            callbackTest = 7
+        }
 
         Assert.assertEquals("Bai Mu Dan", teas[2].name)
+        Assert.assertEquals("Bai Mu Dan", Tea.currentTea?.name)
         Assert.assertEquals(80, teas[2].temp)
         Assert.assertEquals(5, teas[2].amount)
         Assert.assertEquals(TeaTypes.BLACK, teas[2].type)
+        Assert.assertEquals(7, callbackTest)
     }
 
     @Test

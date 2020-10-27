@@ -54,7 +54,7 @@ class NewTeaFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.toString() == "Save tea") {
-            viewModel.saveTea()
+            viewModel.saveTea{}
             Toast.makeText(context, "Tea saved: "+viewModel.currentTea_Name, Toast.LENGTH_LONG).show()
         }
 

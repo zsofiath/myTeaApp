@@ -35,12 +35,12 @@ class EditTeaViewModel(
         }
     }
 
-    public fun saveTea(): Boolean {
+    public fun saveTea(callback: () -> Unit): Boolean {
         if(allDataFilled()) {
             if(Tea.currentTea != null) {
-                prepareAndUpdate(Tea.currentTea?.id!!)
+                prepareAndUpdate(Tea.currentTea?.id!!, callback)
             } else {
-                prepareAndSave()
+                prepareAndSave(callback)
             }
             return true;
         }
@@ -84,7 +84,7 @@ class EditTeaViewModel(
         }
     }
 
-    private fun prepareAndSave() {
+    private fun prepareAndSave(callback: () -> Unit) {
         viewModelScope.launch {
             val newTea = Tea(0)
             newTea.name = currentTea_Name
@@ -92,11 +92,14 @@ class EditTeaViewModel(
             newTea.amount = currentTea_AmountOfLeaf.toInt()
             newTea.type = currentTea_type
 
+            Tea.currentTea = newTea
+
             repository.insert(newTea)
+            callback()
         }
     }
 
-    private fun prepareAndUpdate(id: Int) {
+    private fun prepareAndUpdate(id: Int, callback: () -> Unit) {
         viewModelScope.launch {
             val newTea = Tea(id)
             newTea.name = currentTea_Name
@@ -104,7 +107,10 @@ class EditTeaViewModel(
             newTea.amount = currentTea_AmountOfLeaf.toInt()
             newTea.type = currentTea_type
 
+            Tea.currentTea = newTea
+
             repository.update(newTea)
+            callback()
         }
     }
 
