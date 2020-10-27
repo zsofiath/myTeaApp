@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.tzs.myteaapplication.database.AppDatabase
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.databinding.FragmentEditTeaBinding
@@ -32,6 +33,11 @@ class EditTeaFragment : Fragment() {
         binding.editTeaViewModel = viewModel
         binding.radioGroup.check(viewModel.getCheckedViewId())
         radioChange(binding)
+        binding.deleteTea.setOnClickListener { v:View ->
+            viewModel.deleteTea {
+                v.findNavController().navigate(R.id.action_editTeaFragment_to_teaListFragment)
+            }
+        }
 
         setBindings(binding)
         setHasOptionsMenu(true)

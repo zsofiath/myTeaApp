@@ -37,5 +37,9 @@
         android:id="@+id/editTeaFragment"
         android:name="com.tzs.myteaapplication.EditTeaFragment"
         android:label="fragment_edit_tea"
-        tools:layout="@layout/fragment_edit_tea" />
+        tools:layout="@layout/fragment_edit_tea" >
+        <action
+            android:id="@+id/action_editTeaFragment_to_teaListFragment"
+            app:destination="@id/teaListFragment" />
+    </fragment>
 </navigation>

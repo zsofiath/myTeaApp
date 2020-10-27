@@ -43,7 +43,7 @@ class NewTeaTest {
 
         val repo = FakeTeaRepository(teas)
 
-        val listViewModel = EditTeaViewModel(repo, ApplicationProvider.getApplicationContext())
+        val listViewModel = EditTeaViewModel(repo)
 
 
         listViewModel.currentTea_Name = "Bai Mu Dan"
@@ -71,7 +71,7 @@ class NewTeaTest {
         t.type = TeaTypes.PUERH
         Tea.currentTea = t
 
-        val listViewModel = EditTeaViewModel(repo, ApplicationProvider.getApplicationContext())
+        val listViewModel = EditTeaViewModel(repo)
 
         Assert.assertEquals("T2", listViewModel.currentTea_Name)
         Assert.assertEquals("5", listViewModel.currentTea_AmountOfLeaf)
@@ -91,7 +91,7 @@ class NewTeaTest {
         t.type = TeaTypes.PUERH
         Tea.currentTea = t
 
-        val listViewModel = EditTeaViewModel(repo, ApplicationProvider.getApplicationContext())
+        val listViewModel = EditTeaViewModel(repo)
 
         Assert.assertEquals(R.id.PUERH, listViewModel.getCheckedViewId())
     }
@@ -102,7 +102,7 @@ class NewTeaTest {
 
         val repo = FakeTeaRepository(teas)
 
-        val listViewModel = EditTeaViewModel(repo, ApplicationProvider.getApplicationContext())
+        val listViewModel = EditTeaViewModel(repo)
 
         var t = Tea(2)
         Tea.currentTea = t
@@ -132,10 +132,14 @@ class NewTeaTest {
         t.type = TeaTypes.PUERH
         Tea.currentTea = t
 
-        val ViewModel = EditTeaViewModel(repo, ApplicationProvider.getApplicationContext())
+        val ViewModel = EditTeaViewModel(repo)
+        var callbackTest = 4
 
-        ViewModel.deleteTea()
+        ViewModel.deleteTea {
+            callbackTest = 7
+        }
 
         Assert.assertEquals(2, teas.count())
+        Assert.assertEquals(7, callbackTest)
     }
 }

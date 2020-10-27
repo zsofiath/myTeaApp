@@ -12,7 +12,7 @@ class EditTeaViewModelFactory(private val repository: ITeaRepository,
 ) : ViewModelProvider.Factory  {
     override fun <T : ViewModel?>  create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(EditTeaViewModel::class.java)) {
-            return EditTeaViewModel(repository, application) as T
+            return EditTeaViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

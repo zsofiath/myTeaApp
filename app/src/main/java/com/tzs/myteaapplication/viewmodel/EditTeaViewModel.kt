@@ -19,8 +19,7 @@ import java.lang.Exception
 import java.util.stream.Collectors.toList
 
 class EditTeaViewModel(
-    val repository: ITeaRepository,
-    application: Application
+    val repository: ITeaRepository
 ): ViewModel() {
     var currentTea_Name = ""
     var currentTea_AmountOfLeaf = ""
@@ -43,7 +42,6 @@ class EditTeaViewModel(
             } else {
                 prepareAndSave()
             }
-
             return true;
         }
         return false;
@@ -79,9 +77,10 @@ class EditTeaViewModel(
         }
     }
 
-    public fun deleteTea(){
+    public fun deleteTea(callback: () -> Unit){
         viewModelScope.launch {
             repository.delete(Tea.currentTea!!)
+            callback()
         }
     }
 
@@ -111,9 +110,5 @@ class EditTeaViewModel(
 
     private fun allDataFilled(): Boolean {
         return currentTea_Name != "" && currentTea_BrewingTemperature!= "" && currentTea_AmountOfLeaf != ""
-    }
-
-    private suspend fun insert(night: Tea) {
-       // database.insert(night)
     }
 }
