@@ -6,7 +6,7 @@ class Tea(val id:Int) {
     var temp: Int? = null
     var amount: Int? = null
     var type: TeaTypes? = null
-    var brewingTimes = IntArray(5) { 0 }
+    var brewingTimes = emptyList<Int>()
 
     companion object {
         var currentTea: Tea? = null

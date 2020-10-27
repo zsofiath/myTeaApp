@@ -25,6 +25,7 @@ class EditTeaViewModel(
     var currentTea_AmountOfLeaf = ""
     var currentTea_BrewingTemperature = ""
     var currentTea_type: TeaTypes? = null
+    var currentTea_infusions: List<Int> = emptyList<Int>()
 
     init {
         if(Tea.currentTea != null) {

@@ -19,7 +19,8 @@ data class TeaEntity (
     var amount: Int = 0,
 
     @ColumnInfo(name = "tea_type")
-    var type: String = ""
+    var type: String = "",
 
-
+    @ColumnInfo(name = "tea_infusions")
+    var infusions: String = ""
 )

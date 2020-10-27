@@ -50,6 +50,7 @@ class NewTeaTest {
         listViewModel.currentTea_AmountOfLeaf = "5"
         listViewModel.currentTea_BrewingTemperature = "80"
         listViewModel.currentTea_type = TeaTypes.BLACK
+        listViewModel.currentTea_infusions = listOf<Int>(60, 90, 120)
 
         var callbackTest = 4
         listViewModel.saveTea{

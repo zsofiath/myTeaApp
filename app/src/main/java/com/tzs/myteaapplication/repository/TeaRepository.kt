@@ -51,16 +51,26 @@ class TeaRepository(val database: TeaDatabaseDao): ITeaRepository {
         tea.amount = teaEntity.amount
         tea.temp = teaEntity.temperature
         tea.type =  TeaTypes.valueOf(teaEntity.type)
+        tea.brewingTimes = convertStringToList(teaEntity.infusions)
         return tea
     }
 
-    private fun createTeaEntity(tea: Tea): TeaEntity{
+    private fun createTeaEntity(tea: Tea): TeaEntity {
         var teaEntity = TeaEntity()
         teaEntity.teaId = tea.id
         teaEntity.name = ""+tea.name
         teaEntity.amount = tea.amount!!
         teaEntity.temperature = tea.temp!!
         teaEntity.type = tea.type.toString()
+        teaEntity.infusions = convertListToString(tea.brewingTimes)
         return teaEntity
+    }
+
+    fun convertStringToList(str: String): List<Int>{
+        return str.split(',').map { s -> s.toInt() }
+    }
+
+    fun convertListToString(list: List<Int>): String{
+        return list.map { i -> i.toString() }.joinToString(",")
     }
 }
