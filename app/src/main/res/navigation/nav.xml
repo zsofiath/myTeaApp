@@ -35,7 +35,8 @@
         android:label="NewTeaFragment" >
         <action
             android:id="@+id/action_newTeaFragment2_to_viewTeaFragment"
-            app:destination="@id/viewTeaFragment" />
+            app:destination="@id/viewTeaFragment"
+            app:popUpTo="@id/teaListFragment" />
     </fragment>
     <fragment
         android:id="@+id/editTeaFragment"
@@ -47,6 +48,7 @@
             app:destination="@id/teaListFragment" />
         <action
             android:id="@+id/action_editTeaFragment_to_viewTeaFragment"
-            app:destination="@id/viewTeaFragment" />
+            app:destination="@id/viewTeaFragment"
+            app:popUpTo="@id/teaListFragment" />
     </fragment>
 </navigation>
