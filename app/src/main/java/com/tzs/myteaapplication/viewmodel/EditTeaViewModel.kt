@@ -28,6 +28,7 @@ class EditTeaViewModel(
     var currentTea_infusions: List<Int> = emptyList<Int>()
 
     init {
+        currentTea_infusions = listOf(20)
         if(Tea.currentTea != null) {
             currentTea_Name = Tea.currentTea?.name!!
             currentTea_AmountOfLeaf = Tea.currentTea?.amount!!.toString()

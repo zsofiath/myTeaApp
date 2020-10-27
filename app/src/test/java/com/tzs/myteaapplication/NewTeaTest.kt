@@ -37,6 +37,15 @@ class NewTeaTest {
         teas.add(t2)
         teas.add(t3)
     }
+    @Test
+    fun initBrewingTime_CreateTea(){
+        val repo = FakeTeaRepository(teas)
+
+        val listViewModel = EditTeaViewModel(repo)
+
+        Assert.assertEquals(1, listViewModel.currentTea_infusions.count())
+        Assert.assertEquals(20, listViewModel.currentTea_infusions[0])
+    }
 
     @Test
     fun createNewTeaObject() {
