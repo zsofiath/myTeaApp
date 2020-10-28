@@ -23,7 +23,7 @@ class InfusionEditoradapter(): RecyclerView.Adapter<InfusionViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InfusionViewHolder {
         val  layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.text_item_view, parent, false) as TextView
+        val view = layoutInflater.inflate(R.layout.input_item_view, parent, false) as TextView
 
         return InfusionViewHolder(view)
     }
