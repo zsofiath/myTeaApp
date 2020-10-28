@@ -48,6 +48,20 @@ class NewTeaTest {
     }
 
     @Test
+    fun addNewBrewingTime_CreateTea(){
+        val repo = FakeTeaRepository(teas)
+
+        val listViewModel = EditTeaViewModel(repo)
+
+        listViewModel.addNewInfusion()
+
+        listViewModel.infusions.observeForever{
+            it -> Assert.assertEquals(2, it.count())
+        }
+        Assert.assertEquals(2, listViewModel.currentTea_infusions.count())
+    }
+
+    @Test
     fun createNewTeaObject() {
 
         val repo = FakeTeaRepository(teas)
@@ -59,7 +73,7 @@ class NewTeaTest {
         listViewModel.currentTea_AmountOfLeaf = "5"
         listViewModel.currentTea_BrewingTemperature = "80"
         listViewModel.currentTea_type = TeaTypes.BLACK
-        listViewModel.currentTea_infusions = listOf<Int>(60, 90, 120)
+        listViewModel.currentTea_infusions = mutableListOf<Int>(60, 90, 120)
 
         var callbackTest = 4
         listViewModel.saveTea{

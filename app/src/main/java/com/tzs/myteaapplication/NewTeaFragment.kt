@@ -40,6 +40,25 @@ class NewTeaFragment : Fragment() {
 
 
         val adapter = InfusionEditoradapter()
+        listenInfusionListChanges(adapter, binding)
+
+        adNewRowButtonClick(binding)
+
+
+        hideDeleteButton(binding)
+        radioChange(binding)
+        setBindings(binding)
+        setHasOptionsMenu(true)
+        return binding.root
+    }
+
+    private fun adNewRowButtonClick(binding: FragmentEditTeaBinding) {
+        binding.addRowButton.setOnClickListener {
+            viewModel.addNewInfusion()
+        }
+    }
+
+    private fun listenInfusionListChanges(adapter: InfusionEditoradapter, binding: FragmentEditTeaBinding) {
         binding.teaList.adapter = adapter
 
         viewModel.infusions.observe(viewLifecycleOwner, Observer {
@@ -48,13 +67,6 @@ class NewTeaFragment : Fragment() {
 
             }
         })
-
-
-        hideDeleteButton(binding)
-        radioChange(binding)
-        setBindings(binding)
-        setHasOptionsMenu(true)
-        return binding.root
     }
 
     private fun hideDeleteButton(binding: FragmentEditTeaBinding) {

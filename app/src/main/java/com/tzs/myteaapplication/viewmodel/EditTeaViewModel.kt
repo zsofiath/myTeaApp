@@ -25,11 +25,11 @@ class EditTeaViewModel(
     var currentTea_AmountOfLeaf = ""
     var currentTea_BrewingTemperature = ""
     var currentTea_type: TeaTypes? = null
-    var currentTea_infusions: List<Int> = emptyList<Int>()
+    var currentTea_infusions: MutableList<Int> = mutableListOf()
     var infusions: MutableLiveData<List<Int>> = MutableLiveData()
 
     init {
-        currentTea_infusions = listOf(20)
+        currentTea_infusions =  mutableListOf(20)
         infusions.value = currentTea_infusions
         if(Tea.currentTea != null) {
             currentTea_Name = Tea.currentTea?.name!!
@@ -49,6 +49,11 @@ class EditTeaViewModel(
             return true;
         }
         return false;
+    }
+
+    public fun addNewInfusion(){
+        currentTea_infusions.add(0)
+        infusions.value = currentTea_infusions
     }
 
     public fun getCheckedViewId(): Int {

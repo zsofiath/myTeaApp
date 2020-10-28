@@ -2,14 +2,10 @@ package com.tzs.myteaapplication.Adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tzs.myteaapplication.R
 import com.tzs.myteaapplication.TextItemViewHolder
-import com.tzs.myteaapplication.listeners.TeaItemClickListener
-import com.tzs.myteaapplication.models.Tea
-import kotlinx.android.synthetic.main.tea_list_button.view.*
 
 class InfusionEditoradapter(): RecyclerView.Adapter<TextItemViewHolder>() {
     var data = listOf<Int>()
