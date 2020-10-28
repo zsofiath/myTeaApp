@@ -174,12 +174,14 @@
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
-            <EditText
-                android:id="@+id/editTextNumber"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tea_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="number" />
+                android:layout_height="83dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"></androidx.recyclerview.widget.RecyclerView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

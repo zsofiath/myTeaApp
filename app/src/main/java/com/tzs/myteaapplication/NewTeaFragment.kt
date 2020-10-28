@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.tzs.myteaapplication.Adapters.InfusionEditoradapter
 import com.tzs.myteaapplication.Adapters.TeaListItemAdapter
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.models.TeaTypes
@@ -36,6 +37,19 @@ class NewTeaFragment : Fragment() {
 
         viewModel = createViewModel()
         binding.editTeaViewModel = viewModel
+
+
+        val adapter = InfusionEditoradapter()
+        binding.teaList.adapter = adapter
+
+        viewModel.infusions.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data = it
+
+            }
+        })
+
+
         hideDeleteButton(binding)
         radioChange(binding)
         setBindings(binding)

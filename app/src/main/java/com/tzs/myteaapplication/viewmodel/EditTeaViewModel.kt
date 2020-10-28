@@ -26,9 +26,11 @@ class EditTeaViewModel(
     var currentTea_BrewingTemperature = ""
     var currentTea_type: TeaTypes? = null
     var currentTea_infusions: List<Int> = emptyList<Int>()
+    var infusions: MutableLiveData<List<Int>> = MutableLiveData()
 
     init {
         currentTea_infusions = listOf(20)
+        infusions.value = currentTea_infusions
         if(Tea.currentTea != null) {
             currentTea_Name = Tea.currentTea?.name!!
             currentTea_AmountOfLeaf = Tea.currentTea?.amount!!.toString()
