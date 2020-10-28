@@ -22,6 +22,8 @@ class TeaViewModel(teaId: Int): ViewModel() {
     var currentTea_AmountOfLeaf = ""
     var currentTea_BrewingTemperature = ""
     var currentTea_type = ""
+    var currentTea_infusions: MutableList<Int> = mutableListOf()
+    var infusions: MutableLiveData<List<Int>> = MutableLiveData()
 
     private var timer: CountDownTimer? = null
 
@@ -30,6 +32,10 @@ class TeaViewModel(teaId: Int): ViewModel() {
         get() = _countDownValue
 
     init {
+
+        currentTea_infusions =  mutableListOf(20)
+        infusions.value = currentTea_infusions
+
         currentTea = Tea.currentTea
 
         currentTea_AmountOfLeaf = Tea.currentTea?.amount.toString()+"g/100ml"

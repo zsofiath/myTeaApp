@@ -9,6 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.tzs.myteaapplication.Adapters.InfusionAdapter
+import com.tzs.myteaapplication.Adapters.InfusionEditoradapter
+import com.tzs.myteaapplication.databinding.FragmentEditTeaBinding
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.viewmodel.TeaViewModel
 import com.tzs.myteaapplication.viewmodel.TeaViewModelFactory
@@ -38,6 +41,8 @@ class ViewTeaFragment : Fragment() {
         binding.teaViewModel = viewModel
         binding.setLifecycleOwner(this)
 
+        val adapter = InfusionAdapter()
+        listenInfusionListChanges(adapter, binding)
 
         setHasOptionsMenu(true)
         return binding.root
@@ -46,6 +51,17 @@ class ViewTeaFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.view_tea_menu, menu)
+    }
+
+    private fun listenInfusionListChanges(adapter: InfusionAdapter, binding: FragmentViewTeaBinding) {
+        binding.teaList.adapter = adapter
+
+        viewModel.infusions.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data = it
+
+            }
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

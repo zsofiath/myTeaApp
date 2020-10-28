@@ -31,3 +31,4 @@ fun Button.setTeaFormatter(item: Tea?) {
 }
 
 class TextItemViewHolder(val textView: TextView): RecyclerView.ViewHolder(textView)
+class InfusionViewHolder(val textView: TextView): RecyclerView.ViewHolder(textView)
