@@ -47,18 +47,21 @@ class NewTeaTest {
         Assert.assertEquals(20, listViewModel.currentTea_infusions[0])
     }
 
+
     @Test
     fun addNewBrewingTime_CreateTea(){
         val repo = FakeTeaRepository(teas)
 
         val listViewModel = EditTeaViewModel(repo)
-
+        listViewModel.currentTea_infusions[0] = 100
         listViewModel.addNewInfusion()
 
         listViewModel.infusions.observeForever{
             it -> Assert.assertEquals(2, it.count())
+            Assert.assertEquals(100, it[0])
         }
         Assert.assertEquals(2, listViewModel.currentTea_infusions.count())
+        Assert.assertEquals(100, listViewModel.currentTea_infusions[0])
     }
 
     @Test
@@ -84,6 +87,7 @@ class NewTeaTest {
         Assert.assertEquals("Bai Mu Dan", Tea.currentTea?.name)
         Assert.assertEquals(80, teas[3].temp)
         Assert.assertEquals(5, teas[3].amount)
+        Assert.assertEquals(3, teas[3].brewingTimes.count())
         Assert.assertEquals(TeaTypes.BLACK, teas[3].type)
         Assert.assertEquals(7, callbackTest)
         Assert.assertEquals(4, teas.count())

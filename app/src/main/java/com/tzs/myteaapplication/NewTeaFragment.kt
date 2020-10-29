@@ -17,6 +17,8 @@ import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.models.TeaTypes
 import com.tzs.myteaapplication.database.AppDatabase
 import com.tzs.myteaapplication.databinding.FragmentEditTeaBinding
+import com.tzs.myteaapplication.listeners.InfusionChangeListener
+import com.tzs.myteaapplication.listeners.TeaItemClickListener
 import com.tzs.myteaapplication.repository.TeaRepository
 import com.tzs.myteaapplication.viewmodel.EditTeaViewModel
 import com.tzs.myteaapplication.viewmodel.EditTeaViewModelFactory
@@ -39,7 +41,12 @@ class NewTeaFragment : Fragment() {
         binding.editTeaViewModel = viewModel
 
 
-        val adapter = InfusionEditoradapter()
+        val adapter = InfusionEditoradapter(InfusionChangeListener {
+            
+            Log.i("-----", "----------")
+        })
+
+        binding.teaList.adapter = adapter
         listenInfusionListChanges(adapter, binding)
 
         adNewRowButtonClick(binding)

@@ -36,6 +36,7 @@ class EditTeaViewModel(
             currentTea_AmountOfLeaf = Tea.currentTea?.amount!!.toString()
             currentTea_BrewingTemperature = Tea.currentTea?.temp!!.toString()
             currentTea_type = Tea.currentTea?.type
+            infusions.value = Tea.currentTea?.brewingTimes
         }
     }
 
@@ -100,6 +101,7 @@ class EditTeaViewModel(
             newTea.temp = currentTea_BrewingTemperature.toInt()
             newTea.amount = currentTea_AmountOfLeaf.toInt()
             newTea.type = currentTea_type
+            newTea.brewingTimes = currentTea_infusions
 
             Tea.currentTea = newTea
 
@@ -115,6 +117,7 @@ class EditTeaViewModel(
             newTea.temp = currentTea_BrewingTemperature.toInt()
             newTea.amount = currentTea_AmountOfLeaf.toInt()
             newTea.type = currentTea_type
+            newTea.brewingTimes = infusions.value!!
 
             Tea.currentTea = newTea
 
