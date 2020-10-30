@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.tzs.myteaapplication.models.Infusion
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.models.TeaTypes
 import java.util.*
@@ -22,7 +23,7 @@ class TeaViewModel(teaId: Int): ViewModel() {
     var currentTea_AmountOfLeaf = ""
     var currentTea_BrewingTemperature = ""
     var currentTea_type = ""
-    var currentTea_infusions: MutableList<Int> = mutableListOf()
+    var currentTea_infusions: List<Int> = listOf()
     var infusions: MutableLiveData<List<Int>> = MutableLiveData()
 
     private var timer: CountDownTimer? = null
@@ -33,7 +34,7 @@ class TeaViewModel(teaId: Int): ViewModel() {
 
     init {
 
-        currentTea_infusions =  mutableListOf(20)
+        currentTea_infusions =  Tea.currentTea?.brewingTimes!!.map { i -> i.value }
         infusions.value = currentTea_infusions
 
         currentTea = Tea.currentTea

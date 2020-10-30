@@ -26,18 +26,15 @@ class EditTeaViewModel(
     var currentTea_AmountOfLeaf = ""
     var currentTea_BrewingTemperature = ""
     var currentTea_type: TeaTypes? = null
-    var currentTea_infusions: MutableList<Infusion> = mutableListOf()
-    var infusions: MutableLiveData<List<Infusion>> = MutableLiveData()
+    var currentTea_BrewingTimes: String = ""
 
     init {
-        currentTea_infusions =  mutableListOf(Infusion(20))
-        infusions.value = currentTea_infusions
         if(Tea.currentTea != null) {
             currentTea_Name = Tea.currentTea?.name!!
             currentTea_AmountOfLeaf = Tea.currentTea?.amount!!.toString()
             currentTea_BrewingTemperature = Tea.currentTea?.temp!!.toString()
             currentTea_type = Tea.currentTea?.type
-            infusions.value = Tea.currentTea?.brewingTimes
+            currentTea_BrewingTimes = Tea.currentTea?.brewingTimes?.map { i-> i.visibleValue }?.joinToString(",")!!
         }
     }
 
@@ -53,10 +50,6 @@ class EditTeaViewModel(
         return false;
     }
 
-    public fun addNewInfusion(){
-        currentTea_infusions.add(Infusion(0))
-        infusions.value = currentTea_infusions
-    }
 
     public fun getCheckedViewId(): Int {
         when (currentTea_type) {
@@ -102,7 +95,7 @@ class EditTeaViewModel(
             newTea.temp = currentTea_BrewingTemperature.toInt()
             newTea.amount = currentTea_AmountOfLeaf.toInt()
             newTea.type = currentTea_type
-            newTea.brewingTimes = currentTea_infusions
+            newTea.brewingTimes = currentTea_BrewingTimes.split(",")?.map { i-> Infusion(i.toInt()) }!!
 
             Tea.currentTea = newTea
 
@@ -118,7 +111,7 @@ class EditTeaViewModel(
             newTea.temp = currentTea_BrewingTemperature.toInt()
             newTea.amount = currentTea_AmountOfLeaf.toInt()
             newTea.type = currentTea_type
-            newTea.brewingTimes = infusions.value!!
+            newTea.brewingTimes = currentTea_BrewingTimes?.split(",")?.map { i-> Infusion(i.toInt()) }!!
 
             Tea.currentTea = newTea
 
@@ -128,6 +121,6 @@ class EditTeaViewModel(
     }
 
     private fun allDataFilled(): Boolean {
-        return currentTea_Name != "" && currentTea_BrewingTemperature!= "" && currentTea_AmountOfLeaf != "" && currentTea_type != null
+        return currentTea_Name != "" && currentTea_BrewingTemperature!= "" && currentTea_AmountOfLeaf != "" && currentTea_type != null && currentTea_BrewingTimes != ""
     }
 }
