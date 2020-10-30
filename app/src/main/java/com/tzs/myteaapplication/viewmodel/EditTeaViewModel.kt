@@ -12,6 +12,7 @@ import com.tzs.myteaapplication.R
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.models.TeaTypes
 import com.tzs.myteaapplication.database.TeaDatabaseDao
+import com.tzs.myteaapplication.models.Infusion
 import com.tzs.myteaapplication.repository.ITeaRepository
 import com.tzs.myteaapplication.repository.TeaRepository
 import kotlinx.coroutines.launch
@@ -25,11 +26,11 @@ class EditTeaViewModel(
     var currentTea_AmountOfLeaf = ""
     var currentTea_BrewingTemperature = ""
     var currentTea_type: TeaTypes? = null
-    var currentTea_infusions: MutableList<Int> = mutableListOf()
-    var infusions: MutableLiveData<List<Int>> = MutableLiveData()
+    var currentTea_infusions: MutableList<Infusion> = mutableListOf()
+    var infusions: MutableLiveData<List<Infusion>> = MutableLiveData()
 
     init {
-        currentTea_infusions =  mutableListOf(20)
+        currentTea_infusions =  mutableListOf(Infusion(20))
         infusions.value = currentTea_infusions
         if(Tea.currentTea != null) {
             currentTea_Name = Tea.currentTea?.name!!
@@ -53,7 +54,7 @@ class EditTeaViewModel(
     }
 
     public fun addNewInfusion(){
-        currentTea_infusions.add(0)
+        currentTea_infusions.add(Infusion(0))
         infusions.value = currentTea_infusions
     }
 

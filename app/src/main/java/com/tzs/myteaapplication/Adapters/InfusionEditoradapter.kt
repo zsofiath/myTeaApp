@@ -14,7 +14,7 @@ import com.tzs.myteaapplication.listeners.TeaItemClickListener
 import com.tzs.myteaapplication.models.Tea
 
 class InfusionEditoradapter(val changeListener: InfusionChangeListener): RecyclerView.Adapter<InfusionEditoradapter.ViewHolder>() {
-    var data = listOf<Int>()
+    var data = listOf<String>()
     set(value) {
         field = value
         notifyDataSetChanged()
@@ -33,7 +33,7 @@ class InfusionEditoradapter(val changeListener: InfusionChangeListener): Recycle
 
     class ViewHolder private constructor(val binding: InputItemViewBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(
-            item: Int,
+            item: String,
             clickListener: InfusionChangeListener
         ) {
             //binding.tea = item

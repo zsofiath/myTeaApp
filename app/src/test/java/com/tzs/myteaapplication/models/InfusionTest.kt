@@ -10,29 +10,28 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class InfusionTest {
     @Test fun infusion(){
-        var inf = Infusion()
-        inf.value = 0
+        var inf = Infusion(0)
 
         Assert.assertEquals("0", inf.visibleValue)
 
     }
 
     @Test fun infusion_VisibleValueGetter(){
-        var inf = Infusion()
+        var inf = Infusion(0)
         inf.value = 20
 
         Assert.assertEquals("20", inf.visibleValue)
 
     }
     @Test fun infusion_ValueGetter(){
-        var inf = Infusion()
+        var inf = Infusion(0)
         inf.visibleValue = "20"
 
         Assert.assertEquals(20, inf.value)
 
     }
     @Test fun infusion_ValueSetter(){
-        var inf = Infusion()
+        var inf = Infusion(0)
         inf.value = 20
 
         Assert.assertEquals("20", inf.visibleValue)
@@ -40,7 +39,7 @@ class InfusionTest {
     }
 
     @Test fun infusion_VisibleValueSetter(){
-        var inf = Infusion()
+        var inf = Infusion(0)
         inf.visibleValue = "100"
 
         Assert.assertEquals(100, inf.value)
@@ -48,7 +47,7 @@ class InfusionTest {
 
     @Test
     fun countDown(){
-        var inf = Infusion()
+        var inf = Infusion(0)
         inf.visibleValue = "3"
 
         inf.countDown()

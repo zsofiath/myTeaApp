@@ -70,8 +70,8 @@ class NewTeaFragment : Fragment() {
 
         viewModel.infusions.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.data = it
-
+                adapter.data = it.map { i -> i.toString() }
+                Log.i("---------", "------")
             }
         })
     }

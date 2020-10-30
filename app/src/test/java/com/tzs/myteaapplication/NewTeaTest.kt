@@ -3,6 +3,7 @@ package com.tzs.myteaapplication
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.tzs.myteaapplication.models.Infusion
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.models.TeaTypes
 import com.tzs.myteaapplication.viewmodel.EditTeaViewModel
@@ -44,7 +45,7 @@ class NewTeaTest {
         val listViewModel = EditTeaViewModel(repo)
 
         Assert.assertEquals(1, listViewModel.currentTea_infusions.count())
-        Assert.assertEquals(20, listViewModel.currentTea_infusions[0])
+        Assert.assertEquals(20, listViewModel.currentTea_infusions[0].value)
     }
 
 
@@ -53,15 +54,15 @@ class NewTeaTest {
         val repo = FakeTeaRepository(teas)
 
         val listViewModel = EditTeaViewModel(repo)
-        listViewModel.currentTea_infusions[0] = 100
+        listViewModel.currentTea_infusions[0] = Infusion(100)
         listViewModel.addNewInfusion()
 
         listViewModel.infusions.observeForever{
             it -> Assert.assertEquals(2, it.count())
-            Assert.assertEquals(100, it[0])
+            Assert.assertEquals(100, it[0].value)
         }
         Assert.assertEquals(2, listViewModel.currentTea_infusions.count())
-        Assert.assertEquals(100, listViewModel.currentTea_infusions[0])
+        Assert.assertEquals(100, listViewModel.currentTea_infusions[0].value)
     }
 
     @Test
@@ -76,7 +77,11 @@ class NewTeaTest {
         listViewModel.currentTea_AmountOfLeaf = "5"
         listViewModel.currentTea_BrewingTemperature = "80"
         listViewModel.currentTea_type = TeaTypes.BLACK
-        listViewModel.currentTea_infusions = mutableListOf<Int>(60, 90, 120)
+        listViewModel.currentTea_infusions = mutableListOf<Infusion>(
+            Infusion(10),
+            Infusion(50),
+            Infusion(120)
+        )
 
         var callbackTest = 4
         listViewModel.saveTea{

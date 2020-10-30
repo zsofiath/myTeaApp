@@ -5,6 +5,7 @@ import androidx.lifecycle.Transformations
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.database.TeaDatabaseDao
 import com.tzs.myteaapplication.database.TeaEntity
+import com.tzs.myteaapplication.models.Infusion
 import com.tzs.myteaapplication.models.TeaTypes
 
 
@@ -66,11 +67,11 @@ class TeaRepository(val database: TeaDatabaseDao): ITeaRepository {
         return teaEntity
     }
 
-    fun convertStringToList(str: String): List<Int>{
-        return str.split(',').map { s -> s.toInt() }
+    fun convertStringToList(str: String): List<Infusion>{
+        return str.split(',').map { s -> Infusion(s.toInt()) }
     }
 
-    fun convertListToString(list: List<Int>): String{
-        return list.map { i -> i.toString() }.joinToString(",")
+    fun convertListToString(list: List<Infusion>): String{
+        return list.map { i -> i.value.toString() }.joinToString(",")
     }
 }

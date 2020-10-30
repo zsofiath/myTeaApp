@@ -3,9 +3,9 @@
 xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <data>
-    <!--<variable
-        name="tea"
-        type="com.tzs.myteaapplication.models.Tea" />-->
+    <variable
+        name="inf"
+        type="com.tzs.myteaapplication.models.Infusion" />
     <variable
         name="infusionChangeListener"
         type="com.tzs.myteaapplication.listeners.InfusionChangeListener" />
@@ -14,20 +14,6 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-<!--
-    <Button
-        android:id="@+id/tea_list_button"
-        teaFormatter="@{tea}"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:onClick="@{() -> teaItemClickListener.onClick(tea)}"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />-->
 
     <EditText xmlns:android="http://schemas.android.com/apk/res/android"
         android:textSize="24sp"
@@ -35,7 +21,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         android:paddingEnd="16dp"
         android:inputType="number"
         android:layout_width="match_parent"
-        android:onClick="@{() -> infusionChangeListener.onChange()}"
+        
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,3 +30,8 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
+
+<!-- 
+    android:text="@={inf.visibleValue}"
+        android:textAttrChanged="@{() -> infusionChangeListener.onChange(inf)}"
+ -->
