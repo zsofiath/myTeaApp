@@ -175,7 +175,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/tea_list"
+                android:id="@+id/infusion_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"

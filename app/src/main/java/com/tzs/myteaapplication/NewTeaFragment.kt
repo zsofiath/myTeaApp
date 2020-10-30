@@ -46,7 +46,7 @@ class NewTeaFragment : Fragment() {
             Log.i("-----", "----------")
         })
 
-        binding.teaList.adapter = adapter
+        binding.infusionList.adapter = adapter
         listenInfusionListChanges(adapter, binding)
 
         adNewRowButtonClick(binding)
@@ -66,7 +66,7 @@ class NewTeaFragment : Fragment() {
     }
 
     private fun listenInfusionListChanges(adapter: InfusionEditoradapter, binding: FragmentEditTeaBinding) {
-        binding.teaList.adapter = adapter
+        binding.infusionList.adapter = adapter
 
         viewModel.infusions.observe(viewLifecycleOwner, Observer {
             it?.let {
