@@ -38,6 +38,18 @@ class ViewTeaFragment : Fragment() {
 
         viewModel = getViewModel()
         binding.teaViewModel = viewModel
+
+        viewModel.countDownValue.observe(viewLifecycleOwner, Observer { newValue ->
+            binding.start.text = newValue.toString()
+            binding.start.isClickable = false
+        })
+
+        viewModel.clickable.observe(viewLifecycleOwner, Observer { newValue ->
+            binding.start.isClickable = newValue
+        })
+
+
+
         binding.setLifecycleOwner(this)
 
         val adapter = InfusionAdapter()

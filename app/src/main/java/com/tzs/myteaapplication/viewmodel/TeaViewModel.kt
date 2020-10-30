@@ -18,13 +18,16 @@ import kotlin.math.log
 
 class TeaViewModel(teaId: Int): ViewModel() {
 
+    var currentNumber = "6"
+    var number = 6
     var currentTea: Tea? = null
-    var currentTea_Name = ""
     var currentTea_AmountOfLeaf = ""
     var currentTea_BrewingTemperature = ""
     var currentTea_type = ""
-    var currentTea_infusions: List<Int> = listOf()
     var infusions: MutableLiveData<List<Int>> = MutableLiveData()
+
+
+    var i = 0
 
     private var timer: CountDownTimer? = null
 
@@ -32,12 +35,17 @@ class TeaViewModel(teaId: Int): ViewModel() {
     val countDownValue: LiveData<Int>
         get() = _countDownValue
 
+    private val _clickable = MutableLiveData<Boolean>()
+    val clickable: LiveData<Boolean>
+        get() = _clickable
+
     init {
 
-        currentTea_infusions =  Tea.currentTea?.brewingTimes!!.map { i -> i.value }
-        infusions.value = currentTea_infusions
+        infusions.value =  Tea.currentTea?.brewingTimes!!.map { i -> i.value }
 
         currentTea = Tea.currentTea
+        currentNumber = currentTea!!.brewingTimes[i].visibleValue
+        number = currentTea!!.brewingTimes[i].value
 
         currentTea_AmountOfLeaf = Tea.currentTea?.amount.toString()+"g/100ml"
         currentTea_BrewingTemperature = Tea.currentTea?.temp.toString()+"C°"
@@ -52,11 +60,17 @@ class TeaViewModel(teaId: Int): ViewModel() {
 
     private fun decreaseValue(countDownValue: MutableLiveData<Int>){
         countDownValue.value = (countDownValue.value)?.minus(1)
+        currentNumber = countDownValue.value.toString()
     }
 
-    public fun startCountDown(number: Int){
-        _countDownValue.value = number
+    public fun startCountDown(){
 
+        _countDownValue.value = number
+        currentNumber = number.toString()
+        _clickable.value = false
+
+        Log.i("________________",(1).toString()+" ----- "+infusions.value!!.count().toString())
+        infusions.value = infusions.value!!.toList().subList(1, infusions.value!!.count())
 
         timer = object : CountDownTimer((number*1000).toLong(),1000) {
             override fun onTick(p0: Long) {
@@ -64,6 +78,19 @@ class TeaViewModel(teaId: Int): ViewModel() {
             }
 
             override fun onFinish() {
+
+                if(i < currentTea!!.brewingTimes.count()-1) {
+                    i++
+                    currentNumber = currentTea!!.brewingTimes[i].visibleValue
+                    number = currentTea!!.brewingTimes[i].value
+
+
+
+                    _clickable.value = true
+                }
+                else {
+                    _clickable.value = false
+                }
 
             }
         }
