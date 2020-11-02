@@ -44,20 +44,4 @@ class InfusionTest {
 
         Assert.assertEquals(100, inf.value)
     }
-
-    @Test
-    fun countDown(){
-        var inf = Infusion(0)
-        inf.visibleValue = "3"
-
-        inf.countDown()
-        Assert.assertEquals(3, inf.value)
-
-        Thread.sleep(ONE_SECOND*1+10);
-        Assert.assertEquals(2, inf.value)
-
-        Thread.sleep(ONE_SECOND*3);
-        Assert.assertEquals(0, inf.value)
-
-    }
 }

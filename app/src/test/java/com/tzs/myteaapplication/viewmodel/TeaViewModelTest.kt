@@ -4,6 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.tzs.myteaapplication.models.Infusion
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.models.TeaTypes
+import org.apache.tools.ant.taskdefs.WaitFor
 import org.junit.Assert
 import org.junit.Assert.*
 import org.junit.Test
@@ -28,4 +29,5 @@ class TeaViewModelTest {
         Assert.assertEquals(t.amount.toString() + "g/100ml", vm.currentTea_AmountOfLeaf)
         Assert.assertEquals(t.temp.toString() + "C°", vm.currentTea_BrewingTemperature)
     }
+
 }
