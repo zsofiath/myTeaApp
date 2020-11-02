@@ -23,6 +23,7 @@ import com.tzs.myteaapplication.viewmodel.EditTeaViewModel
 import com.tzs.myteaapplication.viewmodel.EditTeaViewModelFactory
 import com.tzs.myteaapplication.viewmodel.TeaListViewModel
 import com.tzs.myteaapplication.viewmodel.TeaListViewModelFactory
+import java.lang.Exception
 
 class NewTeaFragment : Fragment() {
     var currentTea: Tea? = null
@@ -62,10 +63,16 @@ class NewTeaFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.toString() == "Save tea") {
-            viewModel.saveTea {
-                findNavController().navigate(NewTeaFragmentDirections.actionNewTeaFragment2ToViewTeaFragment(0))
-                Toast.makeText(context, "Tea saved: "+viewModel.currentTea_Name, Toast.LENGTH_LONG).show()
+
+            try {
+                viewModel.saveTea {
+                    findNavController().navigate(NewTeaFragmentDirections.actionNewTeaFragment2ToViewTeaFragment(0))
+                    Toast.makeText(context, "Tea saved: "+viewModel.currentTea_Name, Toast.LENGTH_LONG).show()
+                }
+            } catch (e:Exception) {
+                Toast.makeText(context, "Error: could not save tea", Toast.LENGTH_LONG).show()
             }
+
 
         }
 

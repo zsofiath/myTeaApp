@@ -16,6 +16,7 @@ import com.tzs.myteaapplication.databinding.FragmentEditTeaBinding
 import com.tzs.myteaapplication.repository.TeaRepository
 import com.tzs.myteaapplication.viewmodel.EditTeaViewModel
 import com.tzs.myteaapplication.viewmodel.EditTeaViewModelFactory
+import java.lang.Exception
 
 
 class EditTeaFragment : Fragment() {
@@ -54,9 +55,13 @@ class EditTeaFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         if(item.title == "Save tea") {
-            viewModel.saveTea {
-                findNavController().navigate(EditTeaFragmentDirections.actionEditTeaFragmentToViewTeaFragment(0))
-                Toast.makeText(context, "Tea updated", Toast.LENGTH_LONG).show()
+            try {
+                viewModel.saveTea {
+                    findNavController().navigate(EditTeaFragmentDirections.actionEditTeaFragmentToViewTeaFragment(0))
+                    Toast.makeText(context, "Tea updated", Toast.LENGTH_LONG).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(context, "Error: could not save tea", Toast.LENGTH_LONG).show()
             }
         }
 

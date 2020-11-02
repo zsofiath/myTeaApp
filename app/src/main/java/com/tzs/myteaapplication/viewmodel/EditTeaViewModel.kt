@@ -40,12 +40,12 @@ class EditTeaViewModel(
 
     public fun saveTea(callback: () -> Unit): Boolean {
         if(allDataFilled()) {
-            if(Tea.currentTea != null) {
-                prepareAndUpdate(Tea.currentTea?.id!!, callback)
-            } else {
-                prepareAndSave(callback)
-            }
-            return true;
+                if(Tea.currentTea != null) {
+                    prepareAndUpdate(Tea.currentTea?.id!!, callback)
+                } else {
+                    prepareAndSave(callback)
+                }
+                return true;
         }
         return false;
     }
@@ -95,7 +95,7 @@ class EditTeaViewModel(
             newTea.temp = currentTea_BrewingTemperature.toInt()
             newTea.amount = currentTea_AmountOfLeaf.toInt()
             newTea.type = currentTea_type
-            newTea.brewingTimes = currentTea_BrewingTimes.split(",")?.map { i-> Infusion(i.toInt()) }!!
+            newTea.brewingTimes = currentTea_BrewingTimes.filter { c-> c != ' ' }.split(",")?.map { i-> Infusion(i.toInt()) }!!
 
             Tea.currentTea = newTea
 
