@@ -31,8 +31,8 @@ class TeaViewModel(teaId: Int): ViewModel() {
 
     private var timer: CountDownTimer? = null
 
-    private val _countDownValue = MutableLiveData<Int>()
-    val countDownValue: LiveData<Int>
+    private val _countDownValue = MutableLiveData<String>()
+    val countDownValue: LiveData<String>
         get() = _countDownValue
 
     private val _clickable = MutableLiveData<Boolean>()
@@ -44,7 +44,7 @@ class TeaViewModel(teaId: Int): ViewModel() {
         infusions.value =  Tea.currentTea?.brewingTimes!!.map { i -> i.value }
 
         currentTea = Tea.currentTea
-        currentNumber = currentTea!!.brewingTimes[i].visibleValue
+        currentNumber = "Start brewing tea"
         number = currentTea!!.brewingTimes[i].value
 
         currentTea_AmountOfLeaf = Tea.currentTea?.amount.toString()+"g/100ml"
@@ -58,14 +58,14 @@ class TeaViewModel(teaId: Int): ViewModel() {
     }
 
 
-    private fun decreaseValue(countDownValue: MutableLiveData<Int>){
-        countDownValue.value = (countDownValue.value)?.minus(1)
+    private fun decreaseValue(countDownValue: MutableLiveData<String>){
+        countDownValue.value = (countDownValue.value)?.toInt()?.minus(1).toString()
         currentNumber = countDownValue.value.toString()
     }
 
     public fun startCountDown(){
 
-        _countDownValue.value = number
+        _countDownValue.value = number.toString()
         currentNumber = number.toString()
         _clickable.value = false
 
@@ -84,12 +84,13 @@ class TeaViewModel(teaId: Int): ViewModel() {
                     currentNumber = currentTea!!.brewingTimes[i].visibleValue
                     number = currentTea!!.brewingTimes[i].value
 
-
+                    _countDownValue.value = "Start next infusion"
 
                     _clickable.value = true
                 }
                 else {
                     _clickable.value = false
+                    _countDownValue.value = "Add new leaves!"
                 }
 
             }

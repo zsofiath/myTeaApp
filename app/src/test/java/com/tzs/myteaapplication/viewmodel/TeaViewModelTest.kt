@@ -1,6 +1,7 @@
 package com.tzs.myteaapplication.viewmodel
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.tzs.myteaapplication.models.Infusion
 import com.tzs.myteaapplication.models.Tea
 import com.tzs.myteaapplication.models.TeaTypes
 import org.junit.Assert
@@ -17,6 +18,7 @@ class TeaViewModelTest {
         t.type = TeaTypes.GREEN
         t.temp=100
         t.amount=5
+        t.brewingTimes = mutableListOf(Infusion(30))
 
         Tea.currentTea = t
 
